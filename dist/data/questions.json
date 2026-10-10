@@ -3684,5 +3684,1897 @@
     "correct": 1,
     "explanation": "The stop is excluded, so the last even number is two less than the stop.",
     "difficulty": "easy"
+  },
+  {
+    "id": "lab-001",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "age = \"18\"\nprint(type(age).__name__)",
+    "options": [
+      "str",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "A quoted value is a string, even when its characters are digits.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-002",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "age = input(\"Age: \")\nprint(type(age).__name__)",
+    "options": [
+      "str",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "input() always returns str unless converted explicitly; the entered text is not automatically a number.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-003",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = \"10\"\ny = \"2\"\nprint(x + y)",
+    "options": [
+      "102",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "+ concatenates strings; it does not add numeric-looking strings.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-004",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = int(\"10\")\nprint(x + 2)",
+    "options": [
+      "12",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "int() converts a valid integer string to an int before arithmetic.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-005",
+    "topic": "Input, types & f-strings",
+    "prompt": "Which exception or error occurs?",
+    "code": "print(int(\"3.5\"))",
+    "options": [
+      "ValueError",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "int() cannot parse a decimal-point string directly; float(\"3.5\") works.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-006",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "name = \"Aman\"\nscore = 7\nprint(f\"{name}: {score + 1}\")",
+    "options": [
+      "Aman: 8",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "An f-string evaluates expressions inside braces and substitutes their results.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-007",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 5\nprint(f\"{x * 2}\")",
+    "options": [
+      "10",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Braces in an f-string evaluate Python expressions.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-008",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 2\nprint(\"f{x}\")",
+    "options": [
+      "f{x}",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The f prefix is required for interpolation; ordinary quoted text remains unchanged.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-009",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 2\nprint(f\"{{x}}\")",
+    "options": [
+      "{x}",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Double braces in an f-string print literal braces.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-010",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "price = 12.5\nprint(f\"{price:.1f}\")",
+    "options": [
+      "12.5",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The .1f format specifier displays one digit after the decimal.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-011",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(\"3\" * 2)",
+    "options": [
+      "33",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Multiplying a string by an integer repeats the string.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-012",
+    "topic": "Input, types & f-strings",
+    "prompt": "Which exception or error occurs?",
+    "code": "print(\"3\" + 2)",
+    "options": [
+      "TypeError",
+      "SyntaxError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "Adding a str and an int directly causes a TypeError; convert first.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-013",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "value = \"True\"\nprint(bool(value))",
+    "options": [
+      "True",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Any nonempty string is truthy, including the string \"True\".",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-014",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "value = \"False\"\nprint(bool(value))",
+    "options": [
+      "True",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The text \"False\" is a nonempty string, so bool(value) is True.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-015",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "value = \"\"\nprint(bool(value))",
+    "options": [
+      "False",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "An empty string is falsy.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-016",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "if 4 > 2\n    print(\"yes\")",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "A colon is mandatory after an if condition.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-017",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "if 4 > 2:\nprint(\"yes\")",
+    "options": [
+      "IndentationError",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "An if suite must be indented.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-018",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "print((1 + 2)",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "The outer opening parenthesis is not closed.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-019",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "print(\"hello)",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "A string literal must have matching closing quotation marks.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-020",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "x = 5\nif x = 5:\n    print(x)",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "Use == for comparison; = is assignment and cannot be used in this condition.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-021",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "print(total)",
+    "options": [
+      "NameError",
+      "SyntaxError",
+      "TypeError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "total was never defined, so name lookup fails during execution.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-022",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "x = 1 / 0\nprint(x)",
+    "options": [
+      "ZeroDivisionError",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Division by zero is a runtime exception.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-023",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "nums = [1, 2]\nprint(nums[2])",
+    "options": [
+      "IndexError",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Valid indexes are 0 and 1; index 2 is out of range.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-024",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "x = \"5\"\nprint(x - 1)",
+    "options": [
+      "TypeError",
+      "SyntaxError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "Subtraction between str and int is not supported.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-025",
+    "topic": "Syntax & debugging",
+    "prompt": "What is printed by this Python code?",
+    "code": "for i in range(2):\n    pass\nprint(i)",
+    "options": [
+      "1",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "pass does nothing. The loop variable remains bound to the final iterated value.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-026",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 0\nif x:\n    print(\"A\")\nelse:\n    print(\"B\")",
+    "options": [
+      "B",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The integer zero is falsy.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-027",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 3\nif x > 0:\n    print(\"A\")\nelif x > 2:\n    print(\"B\")",
+    "options": [
+      "A",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Only the first true if/elif branch executes.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-028",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 8\nprint(x > 5 and x < 10)",
+    "options": [
+      "True",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Both comparison operands are true.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-029",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 0\nprint(x == 1 or x == 0)",
+    "options": [
+      "True",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "or is true if at least one condition is true.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-030",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(not (2 == 2))",
+    "options": [
+      "False",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "not reverses the truth value of the comparison.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-031",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(0 or 5)",
+    "options": [
+      "5",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "or returns an operand, not necessarily a bool; 0 is falsy, so result is 5.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-032",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(3 and 7)",
+    "options": [
+      "7",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "and returns the second operand if the first is truthy.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-033",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(5 > 3 > 1)",
+    "options": [
+      "True",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Python allows chained comparisons; both comparisons must hold.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-034",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(list(range(1, 7, 2)))",
+    "options": [
+      "[1, 3, 5]",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "range excludes stop 7 and advances by 2.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-035",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(list(range(5, 0, -2)))",
+    "options": [
+      "[5, 3, 1]",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "A negative step counts backward and excludes the stop value.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-036",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(list(range(3, 3)))",
+    "options": [
+      "[]",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Equal start and stop values produce an empty range.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-037",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "total = 0\nfor x in range(1, 5):\n    total += x\nprint(total)",
+    "options": [
+      "10",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The iterations add 1+2+3+4 = 10; 5 is excluded.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-038",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "s = \"\"\nfor i in range(3):\n    if i == 1:\n        continue\n    s += str(i)\nprint(s)",
+    "options": [
+      "02",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "continue skips the append when i equals 1.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-039",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "s = \"\"\nfor i in range(5):\n    if i == 3:\n        break\n    s += str(i)\nprint(s)",
+    "options": [
+      "012",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "break exits the loop before i=3 is appended.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-040",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 1\nwhile x < 5:\n    x *= 2\nprint(x)",
+    "options": [
+      "8",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "x becomes 2, 4, then 8; the condition is checked again after the update.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-041",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "count = 0\nfor i in range(2):\n    for j in range(3):\n        count += 1\nprint(count)",
+    "options": [
+      "6",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Two outer iterations times three inner iterations equals six.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-042",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = 0\nwhile x < 3:\n    x += 1\n    if x == 2:\n        continue\n    print(x)",
+    "options": [
+      "1\n3",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "At x=2, continue skips print; 1 and 3 are printed.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-043",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "for i in range(2):\n    print(i, end=\"\")\nelse:\n    print(\"X\")",
+    "options": [
+      "01X",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "A for-else block runs when the loop finishes without break.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-044",
+    "topic": "Range & loops",
+    "prompt": "What is printed by this Python code?",
+    "code": "for i in range(3):\n    if i == 1:\n        break\nelse:\n    print(\"done\")\nprint(\"end\")",
+    "options": [
+      "end",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The break prevents the loop-else from running.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-045",
+    "topic": "Indexing & strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "s = \"PYTHON\"\nprint(s[-1])",
+    "options": [
+      "N",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Index -1 selects the last character.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-046",
+    "topic": "Indexing & strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "s = \"PYTHON\"\nprint(s[1:4])",
+    "options": [
+      "YTH",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Slicing includes start index 1 and excludes stop index 4.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-047",
+    "topic": "Indexing & strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "s = \"abc\"\nprint(s[::-1])",
+    "options": [
+      "cba",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "A slice with step -1 reverses the string.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-048",
+    "topic": "Indexing & strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(len(\"a b\"))",
+    "options": [
+      "3",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "The space is also a character.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-049",
+    "topic": "Indexing & strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "x = [1, 2, 3]\nprint(x[-2])",
+    "options": [
+      "2",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Negative indexes count from the right.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-050",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "a = \"4\"\nb = 3\nprint(int(a) * b)",
+    "options": [
+      "12",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "Conversion to int happens before multiplication.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-051",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(f\"{2 + 3=}\")",
+    "options": [
+      "2 + 3=5",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "An f-string expression with = includes the source expression and its result.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "lab-052",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "def greet()\n    print(\"hi\")",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "Function definitions need a trailing colon.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-053",
+    "topic": "Syntax & debugging",
+    "prompt": "Which exception or error occurs?",
+    "code": "for i in range(3)\n    print(i)",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "NameError",
+      "IndentationError"
+    ],
+    "correct": 0,
+    "explanation": "A for header requires a closing parenthesis and a colon.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-054",
+    "topic": "Control flow traps",
+    "prompt": "What is printed by this Python code?",
+    "code": "print(True + True)",
+    "options": [
+      "2",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "bool is a subtype of int in Python; True behaves numerically as 1.",
+    "difficulty": "hard"
+  },
+  {
+    "id": "lab-055",
+    "topic": "Input, types & f-strings",
+    "prompt": "What is printed by this Python code?",
+    "code": "name = 12\nprint(type(name).__name__)",
+    "options": [
+      "int",
+      "SyntaxError",
+      "TypeError",
+      "NameError"
+    ],
+    "correct": 0,
+    "explanation": "An identifier has no permanent default type. The object assigned to name is an integer.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "algo-001",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "What is the main purpose of an algorithm?",
+    "options": [
+      "To store values permanently",
+      "To give step-by-step instructions to solve a problem",
+      "To decorate program output",
+      "To replace Python syntax"
+    ],
+    "correct": 1,
+    "explanation": "An algorithm is a finite, ordered sequence of steps used to solve a problem.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-002",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which of the following best describes pseudocode?",
+    "options": [
+      "Executable Python code",
+      "A hardware diagram",
+      "An informal, language-independent way to describe program logic",
+      "A type of compiler"
+    ],
+    "correct": 2,
+    "explanation": "Pseudocode focuses on logic in a human-readable form and is not tied to exact programming syntax.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-003",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which property is expected from a good algorithm?",
+    "options": [
+      "It should never end",
+      "It should use as many steps as possible",
+      "It should be clear, finite, and correct",
+      "It should avoid all input"
+    ],
+    "correct": 2,
+    "explanation": "Good algorithms are understandable, finish in finite time, and solve the intended problem correctly.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-004",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "In a flow of logic, what usually comes first in an algorithm?",
+    "options": [
+      "Output",
+      "Processing",
+      "Start",
+      "Decision"
+    ],
+    "correct": 2,
+    "explanation": "Algorithms are typically represented as starting with a Start step, then input/processing/output, then Stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-005",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which pseudocode line represents taking input from the user?",
+    "options": [
+      "PRINT number",
+      "INPUT number",
+      "STOP number",
+      "CHECK number"
+    ],
+    "correct": 1,
+    "explanation": "INPUT is commonly used in pseudocode to read a value.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-006",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which pseudocode line represents displaying a result?",
+    "options": [
+      "OUTPUT total",
+      "READ total",
+      "CHECK total",
+      "UPDATE total"
+    ],
+    "correct": 0,
+    "explanation": "OUTPUT means showing or printing a result.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-007",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which statement about pseudocode is true?",
+    "options": [
+      "Indentation never matters for readability",
+      "Pseudocode must follow Python punctuation exactly",
+      "Pseudocode can be written in simple English-like steps",
+      "Pseudocode cannot use loops"
+    ],
+    "correct": 2,
+    "explanation": "Pseudocode is flexible and can be written in structured English to explain program logic.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-008",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "If an algorithm asks for a number and then prints whether it is even or odd, which step should come before the final output?",
+    "options": [
+      "Stop",
+      "Input number",
+      "Process/check remainder",
+      "Both 2 and 3"
+    ],
+    "correct": 3,
+    "explanation": "The program must read the number and process it before displaying the result.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "algo-009",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which is the best pseudocode for adding two numbers?",
+    "options": [
+      "START → INPUT a,b → sum = a + b → OUTPUT sum → STOP",
+      "START → PRINT a + b → STOP",
+      "INPUT a,b → STOP → OUTPUT sum",
+      "START → a+b only → STOP"
+    ],
+    "correct": 0,
+    "explanation": "A complete algorithm includes Start, input, process, output, and Stop in the correct order.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-010",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "What is a dry run in programming?",
+    "options": [
+      "Deleting a program",
+      "Running a program without a computer by tracing steps manually",
+      "Compiling code twice",
+      "Testing only syntax"
+    ],
+    "correct": 1,
+    "explanation": "A dry run means manually tracing variables and steps to understand or verify logic.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-011",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "In pseudocode, which structure repeats a set of steps?",
+    "options": [
+      "Sequence",
+      "Loop",
+      "Decision",
+      "Comment"
+    ],
+    "correct": 1,
+    "explanation": "Loops repeat steps until a condition changes or for a fixed number of times.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-012",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which logic is most suitable to find the larger of two numbers?",
+    "options": [
+      "A loop",
+      "A comparison/decision",
+      "A function definition only",
+      "A comment"
+    ],
+    "correct": 1,
+    "explanation": "You compare the two values using a decision such as IF a > b.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-013",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "What does this pseudocode calculate?",
+    "options": [
+      "Factorial of n",
+      "Sum of numbers from 1 to n",
+      "Number of even values up to n",
+      "Reverse of n"
+    ],
+    "correct": 1,
+    "explanation": "The loop adds each value from 1 through n into sum.",
+    "difficulty": "medium",
+    "code": "START\nINPUT n\nsum = 0\nFOR i = 1 TO n\n    sum = sum + i\nOUTPUT sum\nSTOP"
+  },
+  {
+    "id": "algo-014",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "What problem does this pseudocode solve?",
+    "options": [
+      "Checks positivity",
+      "Checks even or odd",
+      "Finds a factorial",
+      "Counts digits"
+    ],
+    "correct": 1,
+    "explanation": "The remainder after division by 2 determines whether the number is even or odd.",
+    "difficulty": "easy",
+    "code": "START\nINPUT num\nIF num % 2 == 0\n    OUTPUT \"Even\"\nELSE\n    OUTPUT \"Odd\"\nSTOP"
+  },
+  {
+    "id": "algo-015",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "What is the output logic of this pseudocode?",
+    "options": [
+      "Reverse digits of n",
+      "Count digits in n",
+      "Find largest digit in n",
+      "Check palindrome"
+    ],
+    "correct": 1,
+    "explanation": "Each loop removes one digit using // 10 and increases count by 1.",
+    "difficulty": "medium",
+    "code": "START\nINPUT n\ncount = 0\nWHILE n > 0\n    n = n // 10\n    count = count + 1\nOUTPUT count\nSTOP"
+  },
+  {
+    "id": "algo-016",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which of these is a decision structure?",
+    "options": [
+      "FOR i in range(5)",
+      "IF marks >= 40",
+      "total = total + x",
+      "PRINT(result)"
+    ],
+    "correct": 1,
+    "explanation": "IF statements are decision/selection structures.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-017",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Which step is unnecessary in a simple algorithm to print “Hello”?",
+    "options": [
+      "Start",
+      "Output “Hello”",
+      "Stop",
+      "Input a number"
+    ],
+    "correct": 3,
+    "explanation": "No user input is required to print a fixed message.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "algo-018",
+    "topic": "Algorithms & pseudocode",
+    "prompt": "Why is pseudocode useful before writing Python code?",
+    "options": [
+      "It guarantees zero logical errors",
+      "It helps plan the logic before dealing with exact syntax",
+      "It runs faster than code",
+      "It replaces testing completely"
+    ],
+    "correct": 1,
+    "explanation": "Pseudocode lets you focus on solving the problem before writing exact program syntax.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-019",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which of these Python objects is mutable?",
+    "options": [
+      "String",
+      "Tuple",
+      "List",
+      "Integer"
+    ],
+    "correct": 2,
+    "explanation": "Lists can be changed after creation, so they are mutable.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-020",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which of these Python objects is immutable?",
+    "options": [
+      "List",
+      "Dictionary",
+      "Set",
+      "String"
+    ],
+    "correct": 3,
+    "explanation": "Strings cannot be changed in place; operations create a new string instead.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-021",
+    "topic": "Mutable vs immutable",
+    "prompt": "What does mutable mean?",
+    "options": [
+      "Cannot be stored in a variable",
+      "Can be changed after creation",
+      "Always contains numbers",
+      "Only used in loops"
+    ],
+    "correct": 1,
+    "explanation": "Mutable objects can be modified without creating a completely new object.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-022",
+    "topic": "Mutable vs immutable",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3]",
+      "[1, 2]",
+      "TypeError",
+      "[3]"
+    ],
+    "correct": 0,
+    "explanation": "Both a and b refer to the same list object, so mutating through b affects a too.",
+    "difficulty": "medium",
+    "code": "a = [1, 2]\nb = a\nb.append(3)\nprint(a)"
+  },
+  {
+    "id": "mut-023",
+    "topic": "Mutable vs immutable",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Hello",
+      "hello",
+      "HELLO",
+      "TypeError"
+    ],
+    "correct": 0,
+    "explanation": "The upper() method returns a new string. The original string s remains unchanged because strings are immutable.",
+    "difficulty": "medium",
+    "code": "s = \"Hello\"\ns.upper()\nprint(s)"
+  },
+  {
+    "id": "mut-024",
+    "topic": "Mutable vs immutable",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 4]",
+      "[1, 2, 3]",
+      "[4]",
+      "Error"
+    ],
+    "correct": 1,
+    "explanation": "The expression nums + [4] creates a new list, but the result is not stored back into nums.",
+    "difficulty": "medium",
+    "code": "nums = [1, 2, 3]\nnums + [4]\nprint(nums)"
+  },
+  {
+    "id": "mut-025",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which statement is true about tuples?",
+    "options": [
+      "They are mutable sequences",
+      "They are immutable sequences",
+      "They can grow with append()",
+      "They are the same as lists"
+    ],
+    "correct": 1,
+    "explanation": "Tuples cannot be modified after they are created.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-026",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which line would cause an error because the object is immutable?",
+    "options": [
+      "lst[0] = 5",
+      "name[0] = \"P\"",
+      "d[\"x\"] = 1",
+      "nums.append(8)"
+    ],
+    "correct": 1,
+    "explanation": "Strings are immutable, so assigning to an index like name[0] is not allowed.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mut-027",
+    "topic": "Mutable vs immutable",
+    "prompt": "If `a = [10, 20]` and `b = a[:]`, what happens when `b.append(30)` is executed?",
+    "options": [
+      "Both a and b change",
+      "Only b changes",
+      "Only a changes",
+      "A TypeError occurs"
+    ],
+    "correct": 1,
+    "explanation": "Slicing a list creates a new list object, so changes to b do not affect a.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "mut-028",
+    "topic": "Mutable vs immutable",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "(1, 2, 3)",
+      "(1, 2)",
+      "TypeError",
+      "[1, 2, 3]"
+    ],
+    "correct": 1,
+    "explanation": "The expression t + (3,) creates a new tuple, but the original tuple t is unchanged because tuples are immutable.",
+    "difficulty": "medium",
+    "code": "t = (1, 2)\nt + (3,)\nprint(t)"
+  },
+  {
+    "id": "mut-029",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which object type is best matched with “can change individual elements using indexes”?",
+    "options": [
+      "Integer",
+      "String",
+      "List",
+      "Tuple"
+    ],
+    "correct": 2,
+    "explanation": "Lists support index assignment such as nums[0] = 5.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-030",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which phrase correctly compares lists and strings?",
+    "options": [
+      "Both are immutable",
+      "Both are mutable",
+      "Lists are mutable, strings are immutable",
+      "Lists are immutable, strings are mutable"
+    ],
+    "correct": 2,
+    "explanation": "This is a core Python distinction.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-031",
+    "topic": "Mutable vs immutable",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[5, 2, 3]",
+      "[1, 2, 3]",
+      "[5]",
+      "Error"
+    ],
+    "correct": 1,
+    "explanation": "Inside the function, values is rebound to a new list. The original list outside the function stays unchanged.",
+    "difficulty": "hard",
+    "code": "values = [1, 2, 3]\n\ndef change(lst):\n    lst = [5]\n\nchange(values)\nprint(values)"
+  },
+  {
+    "id": "mut-032",
+    "topic": "Mutable vs immutable",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4]",
+      "[1, 2, 3]",
+      "[4]",
+      "TypeError"
+    ],
+    "correct": 0,
+    "explanation": "The function receives the same list object and appends 4 to it, so the original list changes.",
+    "difficulty": "hard",
+    "code": "values = [1, 2, 3]\n\ndef change(lst):\n    lst.append(4)\n\nchange(values)\nprint(values)"
+  },
+  {
+    "id": "mut-033",
+    "topic": "Mutable vs immutable",
+    "prompt": "Which built-in type below is immutable?",
+    "options": [
+      "set",
+      "list",
+      "dict",
+      "float"
+    ],
+    "correct": 3,
+    "explanation": "Numbers such as float values are immutable. Reassigning the variable gives it a new value rather than mutating the old one.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "mut-034",
+    "topic": "Mutable vs immutable",
+    "prompt": "Why does Python call strings immutable?",
+    "options": [
+      "Because strings cannot be printed",
+      "Because their characters cannot be changed in place",
+      "Because they always store one character",
+      "Because they do not support indexing"
+    ],
+    "correct": 1,
+    "explanation": "Operations like replace() return a new string instead of altering the existing one.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-035",
+    "topic": "Technical terms",
+    "prompt": "Which of the following is a valid Python identifier?",
+    "options": [
+      "2value",
+      "class",
+      "total_marks",
+      "my-value"
+    ],
+    "correct": 2,
+    "explanation": "Identifiers can use letters, digits, and underscores, but cannot start with a digit or use hyphens or reserved keywords.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-036",
+    "topic": "Technical terms",
+    "prompt": "What is an identifier in Python?",
+    "options": [
+      "A special error message",
+      "A name used for variables, functions, classes, etc.",
+      "A built-in data type",
+      "A symbol used only in loops"
+    ],
+    "correct": 1,
+    "explanation": "Identifiers are names given to programming elements.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-037",
+    "topic": "Technical terms",
+    "prompt": "Which of these is a Python keyword?",
+    "options": [
+      "marks",
+      "total",
+      "for",
+      "score1"
+    ],
+    "correct": 2,
+    "explanation": "`for` is a reserved keyword used to create loops.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-038",
+    "topic": "Technical terms",
+    "prompt": "Which option is a literal?",
+    "options": [
+      "x",
+      "count",
+      "25",
+      "result"
+    ],
+    "correct": 2,
+    "explanation": "A literal is a fixed value written directly in the code, such as 25, 3.14, or \"hello\".",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-039",
+    "topic": "Technical terms",
+    "prompt": "In `total = a + b`, what is `=` called?",
+    "options": [
+      "Comparison operator",
+      "Assignment operator",
+      "Membership operator",
+      "Logical operator"
+    ],
+    "correct": 1,
+    "explanation": "The single equals sign assigns the value on the right to the variable on the left.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-040",
+    "topic": "Technical terms",
+    "prompt": "In `a + b`, the `+` symbol is a/an _____.",
+    "options": [
+      "literal",
+      "identifier",
+      "operator",
+      "keyword"
+    ],
+    "correct": 2,
+    "explanation": "Operators perform actions on operands.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-041",
+    "topic": "Technical terms",
+    "prompt": "In `a + b`, `a` and `b` are called _____.",
+    "options": [
+      "operands",
+      "errors",
+      "keywords",
+      "modules"
+    ],
+    "correct": 0,
+    "explanation": "The values that operators act on are called operands.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-042",
+    "topic": "Technical terms",
+    "prompt": "Which statement about comments is correct?",
+    "options": [
+      "They are executed by Python",
+      "They are ignored by Python and help humans read code",
+      "They always cause SyntaxError",
+      "They can store input values"
+    ],
+    "correct": 1,
+    "explanation": "Comments document code and are ignored during execution.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-043",
+    "topic": "Technical terms",
+    "prompt": "What is the output of `type(10).__name__`?",
+    "options": [
+      "integer",
+      "int",
+      "number",
+      "float"
+    ],
+    "correct": 1,
+    "explanation": "The built-in integer type is named `int`.",
+    "difficulty": "medium",
+    "code": "print(type(10).__name__)"
+  },
+  {
+    "id": "term-044",
+    "topic": "Technical terms",
+    "prompt": "What is the output of this code?",
+    "options": [
+      "str",
+      "int",
+      "float",
+      "bool"
+    ],
+    "correct": 0,
+    "explanation": "`input()` returns text, so the type of x is str unless it is explicitly converted.",
+    "difficulty": "medium",
+    "code": "x = input(\"Enter: \")\nprint(type(x).__name__)"
+  },
+  {
+    "id": "term-045",
+    "topic": "Technical terms",
+    "prompt": "Which statement is true about `input()`?",
+    "options": [
+      "It returns an integer by default",
+      "It returns a string by default",
+      "It returns a list by default",
+      "It returns nothing"
+    ],
+    "correct": 1,
+    "explanation": "`input()` always returns a string unless you wrap it in `int()`, `float()`, etc.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-046",
+    "topic": "Technical terms",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "34",
+      "TypeError",
+      "12"
+    ],
+    "correct": 1,
+    "explanation": "Because both inputs are strings, the `+` operator concatenates them into \"34\".",
+    "difficulty": "hard",
+    "code": "a = \"3\"\nb = \"4\"\nprint(a + b)"
+  },
+  {
+    "id": "term-047",
+    "topic": "Technical terms",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "34",
+      "TypeError",
+      "12"
+    ],
+    "correct": 0,
+    "explanation": "The strings are explicitly converted to integers before adding, so the result is 7.",
+    "difficulty": "medium",
+    "code": "a = int(\"3\")\nb = int(\"4\")\nprint(a + b)"
+  },
+  {
+    "id": "term-048",
+    "topic": "Technical terms",
+    "prompt": "Which is the correct term for a block of code that performs a specific task?",
+    "options": [
+      "function",
+      "literal",
+      "operator",
+      "comment"
+    ],
+    "correct": 0,
+    "explanation": "A function groups reusable statements under one name.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-049",
+    "topic": "Technical terms",
+    "prompt": "Which name is invalid as an identifier because of spaces?",
+    "options": [
+      "student_name",
+      "student1",
+      "student name",
+      "_student"
+    ],
+    "correct": 2,
+    "explanation": "Identifiers cannot contain spaces.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-050",
+    "topic": "Technical terms",
+    "prompt": "What is an expression?",
+    "options": [
+      "A sequence of statements executed only in loops",
+      "A combination of values, variables, and operators that produces a value",
+      "A syntax error message",
+      "A type of pseudocode"
+    ],
+    "correct": 1,
+    "explanation": "Expressions evaluate to a value, such as `2 + 3` or `x * 5`.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "term-051",
+    "topic": "Technical terms",
+    "prompt": "Which one below is a Boolean literal?",
+    "options": [
+      "\"True\"",
+      "1",
+      "True",
+      "yes"
+    ],
+    "correct": 2,
+    "explanation": "The Boolean literals in Python are `True` and `False` without quotation marks.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "term-052",
+    "topic": "Technical terms",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "NameError",
+      "5",
+      "\"5\"",
+      "TypeError"
+    ],
+    "correct": 0,
+    "explanation": "Because x has not been defined earlier, trying to print it raises a NameError.",
+    "difficulty": "medium",
+    "code": "print(x)"
+  },
+  {
+    "id": "labx-053",
+    "topic": "Lab programs",
+    "prompt": "Which concept is most directly used in a program that checks “positive, negative, or zero”?",
+    "options": [
+      "Nested loops",
+      "Selection using if/elif/else",
+      "String slicing",
+      "File handling"
+    ],
+    "correct": 1,
+    "explanation": "Such a program chooses one of multiple branches based on the value of the number.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "labx-054",
+    "topic": "Lab programs",
+    "prompt": "A program that checks voting eligibility mainly uses which idea?",
+    "options": [
+      "Condition testing age against 18",
+      "List mutation",
+      "Recursion",
+      "Tuple packing"
+    ],
+    "correct": 0,
+    "explanation": "Voting eligibility is typically checked with a condition like age >= 18.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "labx-055",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Eligible",
+      "Not eligible",
+      "18",
+      "Error"
+    ],
+    "correct": 0,
+    "explanation": "Since age is 19, the condition age >= 18 is true.",
+    "difficulty": "easy",
+    "code": "age = 19\nif age >= 18:\n    print(\"Eligible\")\nelse:\n    print(\"Not eligible\")"
+  },
+  {
+    "id": "labx-056",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Pass",
+      "Fail",
+      "None",
+      "Error"
+    ],
+    "correct": 0,
+    "explanation": "Marks are 40, so the condition marks >= 40 is true and the program prints Pass.",
+    "difficulty": "easy",
+    "code": "marks = 40\nif marks >= 40:\n    print(\"Pass\")\nelse:\n    print(\"Fail\")"
+  },
+  {
+    "id": "labx-057",
+    "topic": "Lab programs",
+    "prompt": "What is the output of this code?",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "correct": 1,
+    "explanation": "72 is less than 80 but at least 60, so the elif branch prints B.",
+    "difficulty": "medium",
+    "code": "marks = 72\nif marks >= 80:\n    print(\"A\")\nelif marks >= 60:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "labx-058",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1 2 3 4 5",
+      "0 1 2 3 4",
+      "1 2 3 4",
+      "2 3 4 5"
+    ],
+    "correct": 0,
+    "explanation": "range(1, 6) generates 1, 2, 3, 4, 5.",
+    "difficulty": "easy",
+    "code": "for i in range(1, 6):\n    print(i, end=\" \")"
+  },
+  {
+    "id": "labx-059",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1 3 5",
+      "1 2 3 4 5",
+      "0 2 4",
+      "2 4 6"
+    ],
+    "correct": 0,
+    "explanation": "The range starts at 1 and increases by 2, so it prints the odd numbers up to 5.",
+    "difficulty": "easy",
+    "code": "for i in range(1, 6, 2):\n    print(i, end=\" \")"
+  },
+  {
+    "id": "labx-060",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "15",
+      "10",
+      "6",
+      "5"
+    ],
+    "correct": 0,
+    "explanation": "The sum 1 + 2 + 3 + 4 + 5 equals 15.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(1, 6):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "labx-061",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "30",
+      "15",
+      "24",
+      "120"
+    ],
+    "correct": 0,
+    "explanation": "The even numbers up to 10 are 2, 4, 6, 8, 10, which sum to 30.",
+    "difficulty": "hard",
+    "code": "total = 0\nfor i in range(2, 11, 2):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "labx-062",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "24",
+      "120",
+      "5",
+      "15"
+    ],
+    "correct": 1,
+    "explanation": "Factorial of 5 is 5 × 4 × 3 × 2 × 1 = 120.",
+    "difficulty": "medium",
+    "code": "fact = 1\nfor i in range(1, 6):\n    fact *= i\nprint(fact)"
+  },
+  {
+    "id": "labx-063",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "4",
+      "5",
+      "1",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "The number 2048 has four digits.",
+    "difficulty": "medium",
+    "code": "n = 2048\ncount = 0\nwhile n > 0:\n    n //= 10\n    count += 1\nprint(count)"
+  },
+  {
+    "id": "labx-064",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "14",
+      "15",
+      "16",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "The sum of the digits 7 and 8 is 15.",
+    "difficulty": "easy",
+    "code": "n = 78\ns = 0\nwhile n > 0:\n    s += n % 10\n    n //= 10\nprint(s)"
+  },
+  {
+    "id": "labx-065",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "56",
+      "30",
+      "12",
+      "42"
+    ],
+    "correct": 0,
+    "explanation": "The product of digits in 78 is 7 × 8 = 56.",
+    "difficulty": "medium",
+    "code": "n = 78\np = 1\nwhile n > 0:\n    p *= n % 10\n    n //= 10\nprint(p)"
+  },
+  {
+    "id": "labx-066",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "3",
+      "10",
+      "1"
+    ],
+    "correct": 0,
+    "explanation": "The largest digit in 372 is 7.",
+    "difficulty": "hard",
+    "code": "n = 372\nlargest = 0\nwhile n > 0:\n    digit = n % 10\n    if digit > largest:\n        largest = digit\n    n //= 10\nprint(largest)"
+  },
+  {
+    "id": "labx-067",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "3",
+      "7",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "The smallest digit in 372 is 2.",
+    "difficulty": "hard",
+    "code": "n = 372\nsmallest = 9\nwhile n > 0:\n    digit = n % 10\n    if digit < smallest:\n        smallest = digit\n    n //= 10\nprint(smallest)"
+  },
+  {
+    "id": "labx-068",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Palindrome",
+      "Not palindrome",
+      "121",
+      "Error"
+    ],
+    "correct": 0,
+    "explanation": "Reversing 121 gives 121 again, so it is a palindrome.",
+    "difficulty": "medium",
+    "code": "n = 121\noriginal = n\nrev = 0\nwhile n > 0:\n    rev = rev * 10 + n % 10\n    n //= 10\nif original == rev:\n    print(\"Palindrome\")\nelse:\n    print(\"Not palindrome\")"
+  },
+  {
+    "id": "labx-069",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Prime",
+      "Not prime",
+      "1",
+      "2"
+    ],
+    "correct": 0,
+    "explanation": "7 has no divisors other than 1 and itself, so it is prime.",
+    "difficulty": "medium",
+    "code": "n = 7\ncount = 0\nfor i in range(1, n + 1):\n    if n % i == 0:\n        count += 1\nif count == 2:\n    print(\"Prime\")\nelse:\n    print(\"Not prime\")"
+  },
+  {
+    "id": "labx-070",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Perfect",
+      "Not perfect",
+      "6",
+      "12"
+    ],
+    "correct": 0,
+    "explanation": "The proper divisors of 6 are 1, 2, and 3, and their sum is 6, so it is a perfect number.",
+    "difficulty": "hard",
+    "code": "n = 6\ns = 0\nfor i in range(1, n):\n    if n % i == 0:\n        s += i\nif s == n:\n    print(\"Perfect\")\nelse:\n    print(\"Not perfect\")"
+  },
+  {
+    "id": "labx-071",
+    "topic": "Lab programs",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "Armstrong",
+      "Not Armstrong",
+      "153",
+      "9"
+    ],
+    "correct": 0,
+    "explanation": "153 is an Armstrong number because 1³ + 5³ + 3³ = 153.",
+    "difficulty": "hard",
+    "code": "n = 153\ns = 0\ntemp = n\nwhile temp > 0:\n    digit = temp % 10\n    s += digit ** 3\n    temp //= 10\nif s == n:\n    print(\"Armstrong\")\nelse:\n    print(\"Not Armstrong\")"
+  },
+  {
+    "id": "labx-072",
+    "topic": "Lab programs",
+    "prompt": "Which loop is most suitable to print numbers from N down to 1?",
+    "options": [
+      "for i in range(1, n + 1)",
+      "for i in range(n, 0, -1)",
+      "while n < 1",
+      "for i in range(0, n)"
+    ],
+    "correct": 1,
+    "explanation": "To count backward from n to 1, the step must be -1.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "labx-073",
+    "topic": "Lab programs",
+    "prompt": "Which loop is most suitable to print prime numbers from 1 to N?",
+    "options": [
+      "A single if statement only",
+      "Nested loops or repeated divisor checks",
+      "No loop is required",
+      "Only string methods"
+    ],
+    "correct": 1,
+    "explanation": "Prime checking up to N usually requires looping through numbers and testing divisibility.",
+    "difficulty": "medium"
+  },
+  {
+    "id": "labx-074",
+    "topic": "Lab programs",
+    "prompt": "What common programming idea is shared by palindrome, reverse number, and Armstrong-number programs?",
+    "options": [
+      "They all use file input",
+      "They work digit by digit using % and //",
+      "They use only strings",
+      "They require recursion"
+    ],
+    "correct": 1,
+    "explanation": "These number programs usually extract digits with % 10 and remove digits with // 10.",
+    "difficulty": "medium"
   }
 ]

@@ -4,3 +4,13 @@ test('bank has 200+ complete unambiguous option sets',()=>{assert.ok(bank.length
 test('60 unique exam questions max at 15 and unanswered 0',()=>{const quiz=createQuiz(bank,{count:EXAM_SIZE}),answers=quiz.map((item,i)=>item.options.findIndex(o=>o.originalIndex===bank.find(q=>q.id===item.id).correct));assert.equal(new Set(quiz.map(q=>q.id)).size,60);assert.equal(scoreQuiz(bank,quiz,answers).marks,15);const empty=scoreQuiz(bank,quiz,Array(60).fill(null));assert.equal(empty.unanswered,60);assert.equal(empty.marks,0)});
 test('shuffling preserves original correct indexes',()=>{const quiz=createQuiz(bank,{count:30,random:()=>.15});for(const item of quiz)assert.deepEqual(item.options.map(o=>o.originalIndex).sort(),[0,1,2,3])});
 test('timer expiration and length',()=>{assert.equal(EXAM_SECONDS,2700);assert.equal(secondsLeft(1000,1001),0);assert.equal(secondsLeft(4000,2000),2)});
+import {createBalancedExam,EXAM_DIFFICULTY} from '../src/engine.js';
+test('balanced exam mixes 18 easy, 30 medium, 12 hard and scores 15/15',()=>{
+ const exam=createBalancedExam(bank);
+ const byId=new Map(bank.map(q=>[q.id,q]));
+ const counts={easy:0,medium:0,hard:0};
+ for(const q of exam){counts[byId.get(q.id).difficulty]++;assert.equal(new Set(q.options.map(o=>o.originalIndex)).size,4)}
+ assert.deepEqual(counts,EXAM_DIFFICULTY);
+ const answers=exam.map(item=>item.options.findIndex(o=>o.originalIndex===byId.get(item.id).correct));
+ assert.equal(scoreQuiz(bank,exam,answers).marks,15);
+});

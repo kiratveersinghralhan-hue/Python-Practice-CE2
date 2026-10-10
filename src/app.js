@@ -1,19 +1,869 @@
-import {createQuiz,scoreQuiz,secondsLeft,formatTime,EXAM_SIZE,EXAM_SECONDS} from './engine.js';
-import {read,write,remove,saveResult,leaderboard} from './storage.js';
-const app=document.querySelector('#app');let bank=[],quiz=null,answers=[],index=0,mode='',deadline=0,startedAt=0,review=null,ticker=null,topic='all',difficulty='all',nickname=read('nickname','');
-const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const topics=()=>[...new Set(bank.map(q=>q.topic))];const history=()=>read('history',[]);const missed=()=>read('mistakes',[]);
-function shell(body,active='dashboard'){app.innerHTML=`<div class="layout"><aside class="sidebar"><a class="brand" href="#dashboard"><span class="brand-icon">⌘</span><span>CE2<span class="brand-muted"> / PYTHON</span><small>THE PRACTICE ARENA</small></span></a><div class="side-label">WORKSPACE</div><nav>${[['dashboard','◫','Overview'],['practice','◇','Practice'],['exam','◷','Mock exam'],['mistakes','↻','Mistake review'],['leaderboard','♛','Leaderboard'],['revision','▤','Revision notes']].map(([id,ic,t])=>`<a href="#${id}" class="nav-link ${active===id?'active':''}"><span>${ic}</span>${t}</a>`).join('')}</nav><div class="sidebar-foot"><span class="online-dot"></span> Offline ready <small>Progress saved on this device</small></div></aside><main class="main"><header class="topbar"><div class="crumb">ARENA <span>/</span> ${active.toUpperCase()}</div><div class="top-right"><span class="local-pill">◉ LOCAL MODE</span><span class="avatar">${esc((nickname||'G')[0].toUpperCase())}</span></div></header><div class="content">${body}</div></main></div>`;}
-function stats(){const h=history(),attempts=h.reduce((s,r)=>s+r.answered,0),correct=h.reduce((s,r)=>s+r.correct,0);return{attempts,accuracy:attempts?Math.round(correct/attempts*100):0,exams:h.filter(x=>x.mode==='exam').length}}
-function dashboard(){clearInterval(ticker);const s=stats(),h=history(),wrong=missed();const byTopic={};for(const r of h)for(const d of r.details||[]){const t=d.question.topic;byTopic[t]??={wrong:0,total:0};byTopic[t].total++;if(!d.isCorrect)byTopic[t].wrong++}const weak=Object.entries(byTopic).filter(([,v])=>v.total>=2).sort((a,b)=>b[1].wrong/b[1].total-a[1].wrong/a[1].total).slice(0,3);shell(`<div class="eyebrow">YOUR LEARNING SPACE <span class="status-dot"></span></div><section class="hero"><div class="hero-copy"><span class="overline">FUNDAMENTAL PROGRAMMING • CE2</span><h1>Learn the logic.<br/><em>Own the exam.</em></h1><p>Smarter Python practice, without the pressure. Master the basics, trace real code, and walk into your CE2 prepared.</p><div class="action-row"><button class="btn primary" id="start-practice">Start practicing <span>↗</span></button><button class="btn secondary" id="start-exam">Take mock exam <span>↗</span></button></div><div class="hero-caption"><span class="sparkle">✦</span> ${bank.length} practice questions <span>·</span> Unlimited fresh attempts</div></div><div class="hero-art" aria-hidden="true"><div class="code-top"><span>● ● ●</span> <span>main.py</span> <span>↗</span></div><pre><span class="purple">def</span> <span class="aqua">your_potential</span>():<br/>    skills = <span class="lime">"unstoppable"</span><br/>    <span class="purple">for</span> day <span class="purple">in</span> <span class="aqua">range</span>(<span class="peach">1, 30</span>):<br/>        <span class="aqua">practice</span>(day)<br/>    <span class="purple">return</span> skills<br/><br/><span class="muted"># you've got this.</span> ✨</pre><div class="floating-chip">✓ BUILDING CONFIDENCE</div></div></section><section class="metrics"><div class="metric"><span>QUESTIONS ATTEMPTED</span><strong>${s.attempts}</strong><small>Every answer counts ↗</small></div><div class="metric"><span>OVERALL ACCURACY</span><strong>${s.accuracy}<i>%</i></strong><small>Across all sessions</small></div><div class="metric"><span>MOCK EXAMS TAKEN</span><strong>${s.exams}</strong><small>60 questions · 45 minutes</small></div><div class="metric highlight-metric"><span>MISTAKES TO REVISIT</span><strong>${wrong.length}</strong><a href="#mistakes">Review now →</a></div></section><div class="section-heading"><div><span class="eyebrow">CHOOSE YOUR PATH</span><h2>What are we working on?</h2></div><span class="subtle">Build momentum, one question at a time.</span></div><section class="mode-grid"><button class="mode-card" id="mode-practice"><span class="mode-symbol purple-bg">⌘</span><span class="mode-name">Quick practice <span>↗</span></span><span>10 questions. Instant explanations. Zero pressure.</span><span class="tag">AT YOUR OWN PACE</span></button><button class="mode-card" id="mode-exam"><span class="mode-symbol teal-bg">◷</span><span class="mode-name">Exam simulation <span>↗</span></span><span>60 questions. 45 minutes. Just like test day.</span><span class="tag">15 MARKS TOTAL</span></button><button class="mode-card" id="mode-mistakes"><span class="mode-symbol amber-bg">↺</span><span class="mode-name">Mistake review <span>↗</span></span><span>Turn previous wrong answers into strengths.</span><span class="tag">${wrong.length} TO REVIEW</span></button></section><section class="lower-grid"><div class="panel"><div class="panel-head"><h3>Recent activity</h3><a href="#leaderboard">View scores →</a></div>${h.length?h.slice(0,4).map(r=>`<div class="history-line"><span class="history-icon">${r.mode==='exam'?'◷':'◇'}</span><div><strong>${r.mode==='exam'?'Mock exam':'Practice session'}</strong><small>${new Date(r.date).toLocaleDateString()} · ${r.answered} answered</small></div><b>${r.correct}/${r.total}</b></div>`).join(''):'<div class="empty-small">Your journey starts with a single question. ✨</div>'}</div><div class="panel"><div class="panel-head"><h3>Focus areas</h3><span class="eyebrow">PERSONALISED</span></div>${weak.length?weak.map(([t,v])=>`<div class="focus-row"><div><strong>${esc(t)}</strong><small>${v.wrong} misses across ${v.total} questions</small></div><button data-topic="${esc(t)}">Practice →</button></div>`).join(''):'<div class="empty-small">Practice a few topics to unlock tailored recommendations.</div>'}</div></section><footer class="footer">CE2 PYTHON PRACTICE ARENA <span>Built for learning, not for collecting data. Your progress stays on this device.</span></footer>`);document.querySelector('#start-practice').onclick=()=>location.hash='practice';document.querySelector('#start-exam').onclick=()=>location.hash='exam';document.querySelector('#mode-practice').onclick=()=>location.hash='practice';document.querySelector('#mode-exam').onclick=()=>location.hash='exam';document.querySelector('#mode-mistakes').onclick=()=>location.hash='mistakes';document.querySelectorAll('[data-topic]').forEach(b=>b.onclick=()=>{topic=b.dataset.topic;location.hash='practice'});}
-function setup(kind){clearInterval(ticker);const exam=kind==='exam',counts=exam?EXAM_SIZE:10;shell(`<div class="eyebrow">${exam?'EXAM SIMULATION':'PRACTICE LAB'}</div><div class="page-title"><h1>${exam?'Your next mock exam.':'Make progress your way.'}</h1><p>${exam?'60 questions · 45 minutes · 15 marks. Answers are revealed only after submission.':'Choose a topic, then work through 10 randomized questions with instant explanations.'}</p></div><div class="setup-card"><div class="setup-icon">${exam?'◷':'◇'}</div><h2>${exam?'Ready when you are.':'Customize your session.'}</h2>${exam?'<div class="info-strip">The countdown continues if you refresh. The exam is automatically submitted when time runs out. Unanswered questions earn zero marks.</div>':`<label class="field-label" for="topic">TOPIC</label><select id="topic"><option value="all">All topics — mixed practice</option>${topics().map(t=>`<option ${topic===t?'selected':''} value="${esc(t)}">${esc(t)}</option>`).join('')}</select><label class="field-label" for="difficulty">DIFFICULTY</label><select id="difficulty"><option value="all">All difficulties</option><option value="easy">Easy</option><option value="medium">Medium</option></select>`}<button class="btn primary wide" id="begin">${exam?'Begin 45-minute exam':'Begin 10-question practice'} ↗</button></div>` ,kind);document.querySelector('#begin').onclick=()=>{try{if(!exam){topic=document.querySelector('#topic').value;difficulty=document.querySelector('#difficulty').value}const available=bank.filter(q=>(exam||topic==='all'||q.topic===topic)&&(exam||difficulty==='all'||q.difficulty===difficulty));const count=exam?EXAM_SIZE:Math.min(counts,available.length);if(count===0)throw Error('No questions in this filter.');quiz=createQuiz(bank,{count,topic:exam?'all':topic,difficulty:exam?'all':difficulty});answers=Array(quiz.length).fill(null);index=0;mode=kind;startedAt=Date.now();deadline=exam?startedAt+EXAM_SECONDS*1000:0;review=null;persist();renderQuestion()}catch(e){alert(e.message)}}}
-function persist(){write('active',{quiz,answers,index,mode,deadline,startedAt})}function question(){return bank.find(q=>q.id===quiz[index].id)}
-function renderQuestion(){if(!quiz)return dashboard();if(mode==='exam'&&secondsLeft(deadline)===0){finish(true);return}const q=question(),selected=answers[index],correctOption=quiz[index].options.findIndex(o=>o.originalIndex===q.correct),locked=mode!=='exam'&&selected!==null;const count=answers.filter(x=>x!==null).length;shell(`<div class="quiz-heading"><button class="back-link" id="quit">← Leave session</button><span class="quiz-kind">${mode==='exam'?'◷ LIVE EXAM':'◇ PRACTICE MODE'}</span></div><div class="quiz-top"><div><div class="eyebrow">QUESTION ${index+1} OF ${quiz.length}</div><h2>${mode==='exam'?'Mock examination':'Your practice session'}</h2></div><div class="quiz-info">${mode==='exam'?`<span class="timer" id="timer">◷ ${formatTime(secondsLeft(deadline))}</span>`:'<span class="small-info">Instant feedback ON</span>'}<span class="small-info">${count}/${quiz.length} answered</span></div></div><div class="progress-track"><div style="width:${(index+1)/quiz.length*100}%"></div></div><div class="question-layout"><article class="question-card"><div class="question-meta"><span class="topic-pill">${esc(q.topic)}</span><span>${esc(q.difficulty.toUpperCase())}</span></div><h3>${esc(q.prompt)}</h3>${q.code?`<div class="code-block"><div class="code-label">PYTHON <span>● ● ●</span></div><pre><code>${esc(q.code)}</code></pre></div>`:''}<div class="choices">${quiz[index].options.map((o,i)=>`<button class="choice ${selected===i?'chosen':''} ${locked&&i===correctOption?'correct':''} ${locked&&selected===i&&i!==correctOption?'wrong':''}" data-choice="${i}" ${locked?'disabled':''}><span class="choice-letter">${'ABCD'[i]}</span><span>${esc(o.text)}</span>${locked&&i===correctOption?'<b>✓</b>':locked&&selected===i?'<b>✕</b>':''}</button>`).join('')}</div>${locked?`<div class="feedback ${selected===correctOption?'positive':'negative'}"><strong>${selected===correctOption?'✓ Correct! Nice work.':'✕ Not quite. Keep learning.'}</strong><p>${esc(q.explanation)}</p></div>`:''}<div class="question-actions"><button class="btn secondary" id="prev" ${index===0?'disabled':''}>← Previous</button><button class="btn primary" id="next">${index===quiz.length-1?'Finish / submit':'Next question →'}</button></div></article><aside class="navigator"><div class="panel-head"><h3>Question map</h3><span>${count}/${quiz.length}</span></div><div class="number-grid">${quiz.map((_,i)=>`<button data-index="${i}" aria-label="Go to question ${i+1}" class="number ${i===index?'current':''} ${answers[i]!==null?'answered':''}">${i+1}</button>`).join('')}</div><div class="legend"><span>● Current</span><span>● Answered</span><span>○ Not answered</span></div>${mode==='exam'?'<p class="navigator-note">Answers remain hidden until you submit.</p>':'<p class="navigator-note">Select an answer to see the explanation.</p>'}</aside></div>`,mode);document.querySelectorAll('[data-choice]').forEach(b=>b.onclick=()=>{answers[index]=Number(b.dataset.choice);persist();renderQuestion()});document.querySelectorAll('[data-index]').forEach(b=>b.onclick=()=>{index=Number(b.dataset.index);persist();renderQuestion()});document.querySelector('#prev').onclick=()=>{index--;persist();renderQuestion()};document.querySelector('#next').onclick=()=>{if(index===quiz.length-1)confirmSubmit();else{index++;persist();renderQuestion()}};document.querySelector('#quit').onclick=()=>{if(confirm('Leave this session? Your current attempt will be discarded.')){remove('active');quiz=null;location.hash='dashboard'}};clearInterval(ticker);if(mode==='exam')ticker=setInterval(()=>{const left=secondsLeft(deadline);const node=document.querySelector('#timer');if(node)node.textContent='◷ '+formatTime(left);if(left===0)finish(true)},500)}
-function confirmSubmit(){const unanswered=answers.filter(x=>x===null).length;if(mode==='exam'&&!confirm(`Submit exam now? ${unanswered} question${unanswered!==1?'s':''} unanswered. You cannot change answers afterward.`))return;finish(false)}
-function finish(auto){clearInterval(ticker);if(!quiz)return;const result=scoreQuiz(bank,quiz,answers),timeTaken=Math.min(mode==='exam'?EXAM_SECONDS:999999,Math.max(0,Math.round((Date.now()-startedAt)/1000)));const record={id:Date.now(),date:new Date().toISOString(),mode,correct:result.correct,incorrect:result.incorrect,unanswered:result.unanswered,answered:result.correct+result.incorrect,total:quiz.length,marks:result.marks,percent:result.percent,timeTaken,nickname:mode==='exam'?nickname:'',details:result.details};const mistakes=new Set(missed());for(const d of result.details){if(!d.isCorrect)mistakes.add(d.question.id);else mistakes.delete(d.question.id)}write('mistakes',[...mistakes]);saveResult(record);remove('active');review=record;quiz=null;showResult(auto)}
-function showResult(auto=false){const r=review;if(!r)return dashboard();shell(`<div class="eyebrow">SESSION COMPLETE</div><div class="result-hero"><div class="result-icon">✦</div><h1>${r.correct/r.total>=.8?'Excellent work!':'Every attempt is progress.'}</h1><p>${auto?'Your exam was automatically submitted when time expired.':'A little more practice goes a long way.'}</p><div class="big-score">${r.mode==='exam'?r.marks.toFixed(2)+' <small>/ 15</small>':r.correct+' <small>/ '+r.total+'</small>'}</div><span class="topic-pill">${r.mode==='exam'?'EXAM RESULT':'PRACTICE RESULT'}</span></div><div class="result-metrics"><div><span>CORRECT</span><strong>${r.correct}</strong></div><div><span>INCORRECT</span><strong>${r.incorrect}</strong></div><div><span>UNANSWERED</span><strong>${r.unanswered}</strong></div><div><span>ACCURACY</span><strong>${r.percent}%</strong></div><div><span>TIME TAKEN</span><strong>${formatTime(r.timeTaken)}</strong></div></div>${r.mode==='exam'?`<div class="name-card"><div><h3>Save your leaderboard name</h3><p>This leaderboard is saved on this browser only, not shared between devices.</p></div><div class="name-entry"><input id="nickname" maxlength="24" placeholder="Your name" value="${esc(r.nickname||nickname)}" aria-label="Leaderboard name"/><button class="btn primary" id="save-name">Save name</button></div><small id="name-status">${r.nickname?'Saved as '+esc(r.nickname):'Enter your name to appear on the leaderboard.'}</small></div>`:''}<div class="result-controls"><button class="btn primary" id="retake">${r.mode==='exam'?'Retake mock exam':'Practice again'} ↗</button><button class="btn secondary" id="home">Back to dashboard</button></div><div class="section-heading"><div><span class="eyebrow">LEARN FROM EACH ANSWER</span><h2>Full answer review</h2></div></div><div class="review-list">${r.details.map((d,i)=>`<details class="review-entry"><summary><span class="${d.isCorrect?'ok':'bad'}">${d.isCorrect?'✓':d.selected===null?'–':'✕'}</span><span>Q${i+1}. ${esc(d.question.prompt)} ${d.question.code?'(code question)':''}</span><span class="review-topic">${esc(d.question.topic)}</span></summary><div class="review-body">${d.question.code?`<pre>${esc(d.question.code)}</pre>`:''}<p><b>Your answer:</b> ${d.selected===null?'Unanswered':esc(d.options[d.selected]?.text)}</p><p><b>Correct answer:</b> ${esc(d.options[d.correctOption].text)}</p><p>${esc(d.question.explanation)}</p></div></details>`).join('')}</div>`,'dashboard');document.querySelector('#retake').onclick=()=>{location.hash=r.mode==='exam'?'exam':'practice'};document.querySelector('#home').onclick=()=>location.hash='dashboard';document.querySelector('#save-name')?.addEventListener('click',()=>{const value=document.querySelector('#nickname').value.trim();if(value.length<2){document.querySelector('#name-status').textContent='Enter at least 2 characters.';return}nickname=value;write('nickname',value);r.nickname=value;const h=history();const match=h.find(x=>x.id===r.id);if(match){match.nickname=value;write('history',h)}document.querySelector('#name-status').textContent='Saved as '+value+' on this device ✓'});}
-function leader(){const rows=leaderboard();shell(`<div class="eyebrow">PERSONAL RECORDS</div><div class="page-title"><h1>Local leaderboard.</h1><p>Celebrate the best mock exam scores saved in this browser. This is <b>not</b> a shared online leaderboard; other students cannot see these entries.</p></div><div class="panel leaderboard-panel"><div class="table-row table-head"><span>RANK</span><span>NAME</span><span>SCORE</span><span>TIME</span></div>${rows.length?rows.map((r,i)=>`<div class="table-row"><span class="rank">${i+1===1?'🥇':i+1===2?'🥈':i+1===3?'🥉':'#'+(i+1)}</span><strong>${esc(r.nickname)}</strong><b>${r.marks.toFixed(2)} / 15</b><span>${formatTime(r.timeTaken)}</span></div>`).join(''):'<div class="empty-small">No named exam scores yet. Finish a mock exam and save your name to get on the board.</div>'}</div><div class="info-strip">Your name and scores remain in this device’s browser storage. Clearing browser data removes them. Names are not verified identities.</div>`,'leaderboard')}
-function mistakes(){const ids=missed(),pool=bank.filter(q=>ids.includes(q.id));shell(`<div class="eyebrow">FOCUSED IMPROVEMENT</div><div class="page-title"><h1>Make mistakes count.</h1><p>Questions you missed or skipped in previous sessions are collected here. Answer correctly to clear them.</p></div><div class="setup-card"><div class="setup-icon">↺</div><h2>${pool.length} questions to revisit</h2><p>${pool.length?'Start a session with your missed questions.':'Nothing to review yet. Your incorrect answers will appear here automatically.'}</p><button class="btn primary wide" id="begin-mistakes" ${!pool.length?'disabled':''}>Review mistakes ↗</button></div>`,'mistakes');document.querySelector('#begin-mistakes').onclick=()=>{quiz=createQuiz(pool,{count:Math.min(10,pool.length)});answers=Array(quiz.length).fill(null);index=0;mode='practice';deadline=0;startedAt=Date.now();persist();renderQuestion()}}
-function revision(){const notes=[['range()','The stop value is excluded: range(2, 6) gives 2, 3, 4, 5. Negative steps count backward.'],['Division','/ produces true division (a float), // performs floor division, and % gives the remainder.'],['Boolean logic','and needs both operands truthy; or needs either; not reverses truthiness. Python short-circuits and/or.'],['Conditions','Use == to compare and = to assign. elif checks only when prior branches were false. Indentation determines blocks.'],['Loops','Update variables used in while conditions or the loop may never stop. A for loop iterates over an iterable.'],['break / continue / pass','break exits the innermost loop. continue skips the rest of that iteration. pass does nothing.'],['Error types','SyntaxError and IndentationError prevent parsing. NameError, TypeError and ZeroDivisionError happen during execution. Wrong but runnable code is a logical error.'],['Tracing output','Follow updates line by line, track each variable separately, and count loop boundaries before choosing.']];shell(`<div class="eyebrow">THE CHEAT SHEET</div><div class="page-title"><h1>Python, distilled.</h1><p>Quick reminders for the beginner traps most likely to trip you up.</p></div><div class="notes-grid">${notes.map(([h,p],i)=>`<article class="note-card"><span class="note-index">${String(i+1).padStart(2,'0')}</span><h3>${esc(h)}</h3><p>${esc(p)}</p></article>`).join('')}</div><button class="btn primary" id="try-now">Put it into practice ↗</button>`,'revision');document.querySelector('#try-now').onclick=()=>location.hash='practice'}
-function route(){const hash=location.hash.slice(1)||'dashboard';if(quiz){if(hash==='session'){renderQuestion();return}if(!confirm('Leave your current session and discard this attempt?')){location.hash='session';return}quiz=null;remove('active')}if(hash==='exam'||hash==='practice')setup(hash);else if(hash==='mistakes')mistakes();else if(hash==='leaderboard')leader();else if(hash==='revision')revision();else dashboard()}
-async function init(){try{const response=await fetch('data/questions.json');if(!response.ok)throw Error('Could not fetch question bank');bank=await response.json();window.addEventListener('hashchange',route);const active=read('active',null);if(active?.quiz?.length&&active.quiz.every(q=>bank.some(b=>b.id===q.id))){({quiz,answers,index,mode,deadline,startedAt}=active);if(mode==='exam'&&secondsLeft(deadline)===0){finish(true);return}location.hash='session';renderQuestion();return}route()}catch(e){app.innerHTML=`<div class="fatal"><h1>Unable to load the arena</h1><p>${esc(e.message)}</p><p>Run this app through a local server, not a file:// URL. See README.md.</p><button onclick="location.reload()">Try again</button></div>`}}init();
+import { createQuiz, createBalancedExam, scoreQuiz, secondsLeft, formatTime, EXAM_SIZE, EXAM_SECONDS } from './engine.js';
+import { read, write, remove, saveResult, leaderboard } from './storage.js';
+
+const app = document.querySelector('#app');
+let bank = [];
+let quiz = null;
+let answers = [];
+let index = 0;
+let mode = '';
+let deadline = 0;
+let startedAt = 0;
+let currentTopic = 'all';
+let currentDifficulty = 'all';
+let nickname = read('nickname', '');
+let ticker = null;
+let latestResult = null;
+
+const TOPIC_PRACTICE_MAP = {
+  0: 'Input, types & f-strings',
+  1: 'Variables & operators',
+  2: 'Boolean & comparison',
+  3: 'Conditions',
+  4: 'For loops & range',
+  5: 'While loops',
+  6: 'Break, continue & pass',
+  7: 'Syntax & debugging',
+  8: 'Algorithms & pseudocode',
+  9: 'Mutable vs immutable',
+  10: 'Technical terms',
+  11: 'Lab programs',
+};
+
+const lessons = [
+  {
+    title: 'Input, types & f-strings',
+    description:
+      'input() returns a string by default. Convert it when needed, then use f-strings to print neat, readable output.',
+    code: `name = input("Enter name: ")\nage = int(input("Enter age: "))\nprint(f"{name} will be {age + 1} next year.")`,
+    trap: 'Common trap: input() does not automatically return an int. If you add two raw inputs, Python joins text instead of adding numbers.',
+  },
+  {
+    title: 'Variables & operators',
+    description:
+      'Variables store values. Operators like +, -, *, /, // and % work differently, so learn what each one actually returns.',
+    code: `x = 17\nprint(x / 5)\nprint(x // 5)\nprint(x % 5)`,
+    trap: 'Students often confuse / with //. The first gives true division; the second gives floor division.',
+  },
+  {
+    title: 'Boolean logic & comparisons',
+    description:
+      'Use comparison operators with and, or, and not. Solve questions by checking each condition separately first.',
+    code: `x = 7\nprint(x > 5 and x < 10)\nprint(not (x == 7))`,
+    trap: 'Do not guess. Evaluate both comparison parts first, then apply and/or/not.',
+  },
+  {
+    title: 'if, elif, else',
+    description:
+      'Selection statements help Python choose between alternatives. Indentation decides which statements belong to each branch.',
+    code: `marks = 72\nif marks >= 80:\n    print("A")\nelif marks >= 60:\n    print("B")\nelse:\n    print("C")`,
+    trap: 'elif runs only if earlier conditions were false. = is assignment; == is comparison.',
+  },
+  {
+    title: 'for loops & range()',
+    description:
+      'range(start, stop, step) excludes the stop value. Many CE2 questions are built on that single rule.',
+    code: `for i in range(2, 10, 3):\n    print(i)`,
+    trap: 'The stop value is never printed. For the example above, the output is 2, 5, 8.',
+  },
+  {
+    title: 'while loops',
+    description:
+      'A while loop runs while its condition stays true. Update the loop variable correctly or the loop may never stop.',
+    code: `x = 5\nwhile x > 0:\n    print(x)\n    x -= 1`,
+    trap: 'If you forget x -= 1, the loop becomes infinite because the condition never changes.',
+  },
+  {
+    title: 'break, continue & pass',
+    description:
+      'break exits a loop, continue skips the current iteration, and pass does nothing but keeps syntax valid.',
+    code: `for i in range(5):\n    if i == 2:\n        continue\n    print(i)`,
+    trap: 'continue does not end the loop. It skips only the rest of the current iteration.',
+  },
+  {
+    title: 'Strings, indexing & small output traps',
+    description:
+      'Strings support indexing and slicing. Remember that the first character is at index 0.',
+    code: `word = "python"\nprint(word[0])\nprint(word[-1])\nprint(word[1:4])`,
+    trap: 'Negative indexes count from the end. Slices exclude the stop index just like range().',
+  },
+  {
+    title: 'Algorithms & pseudocode',
+    description:
+      'An algorithm is a step-by-step solution. Pseudocode helps you plan program logic before writing Python syntax.',
+    code: `START\nINPUT n\nsum = 0\nFOR i = 1 TO n\n    sum = sum + i\nOUTPUT sum\nSTOP`,
+    trap: 'Do not treat pseudocode like exact Python syntax. Focus on the logical steps: input → process → output.',
+  },
+  {
+    title: 'Mutable vs immutable',
+    description:
+      'Lists are mutable, but strings, numbers and tuples are immutable. This changes how assignments behave.',
+    code: `a = [1, 2]\nb = a\nb.append(3)\nprint(a)`,
+    trap: 'Because both names refer to the same list, changing b also changes a.',
+  },
+  {
+    title: 'Technical terms that appear in viva and MCQs',
+    description:
+      'Know identifiers, literals, keywords, operators, operands, expressions, statements, and comments.',
+    code: `total_marks = 50\n# total_marks is an identifier\n# 50 is a literal`,
+    trap: 'Keywords such as for, if and class cannot be used as identifiers.',
+  },
+  {
+    title: 'Lab-style number programs',
+    description:
+      'Many first-sem questions come from common lab tasks: prime, palindrome, factorial, sum of digits, Armstrong number, and more.',
+    code: `n = 153\ns = 0\ntemp = n\nwhile temp > 0:\n    digit = temp % 10\n    s += digit ** 3\n    temp //= 10\nprint(s == n)`,
+    trap: 'For number problems, % extracts the last digit and // removes the last digit.',
+  },
+];
+
+const revisionCards = [
+  ['input() by default', 'input() returns a string. Use int(input()) or float(input()) when numerical calculation is needed.'],
+  ['Identifier rules', 'Valid identifiers can use letters, digits and underscores, but cannot start with a digit or use spaces/hyphens.'],
+  ['Mutable vs immutable', 'Lists and dictionaries are mutable. Strings, tuples, ints and floats are immutable.'],
+  ['Algorithm vs pseudocode', 'An algorithm is the logic. Pseudocode is a human-readable way to write that logic before actual code.'],
+  ['Common error names', 'SyntaxError = invalid syntax; IndentationError = wrong block spacing; TypeError = invalid type usage; NameError = undefined name.'],
+  ['Loop boundaries', 'range(start, stop, step) excludes stop. Count loop iterations carefully before answering output questions.'],
+  ['Digit problems', 'Use % 10 to get the last digit and // 10 to remove the last digit.'],
+  ['f-strings', 'Use f"..." and write variables or expressions inside {} braces.'],
+  ['Tracing output', 'Go line by line. Update one variable at a time. Never jump straight to the final option.'],
+  ['Logical errors', 'Code can run successfully and still be wrong. That is a logical error, not a syntax/runtime error.'],
+];
+
+function esc(value) {
+  return String(value ?? '').replace(/[&<>"']/g, (ch) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[ch]));
+}
+
+function topics() {
+  return [...new Set(bank.map((q) => q.topic))].sort();
+}
+
+function history() {
+  return read('history', []);
+}
+
+function mistakesSet() {
+  return new Set(read('mistakes', []));
+}
+
+function stats() {
+  const h = history();
+  const attempted = h.reduce((sum, r) => sum + (r.answered || 0), 0);
+  const correct = h.reduce((sum, r) => sum + (r.correct || 0), 0);
+  const accuracy = attempted ? Math.round((correct / attempted) * 100) : 0;
+  const exams = h.filter((r) => r.mode === 'exam').length;
+  return { attempted, accuracy, exams };
+}
+
+function weakTopics() {
+  const topicStats = new Map();
+  for (const attempt of history()) {
+    for (const detail of attempt.details || []) {
+      const key = detail.question.topic;
+      if (!topicStats.has(key)) topicStats.set(key, { total: 0, wrong: 0 });
+      const row = topicStats.get(key);
+      row.total += 1;
+      if (!detail.isCorrect) row.wrong += 1;
+    }
+  }
+  return [...topicStats.entries()]
+    .filter(([, item]) => item.total >= 2)
+    .sort((a, b) => b[1].wrong / b[1].total - a[1].wrong / a[1].total)
+    .slice(0, 4);
+}
+
+function shouldShowIntro() {
+  try {
+    return !sessionStorage.getItem('ce2arena_intro_seen');
+  } catch {
+    return false;
+  }
+}
+
+function dismissIntro(remember = true) {
+  try {
+    if (remember) sessionStorage.setItem('ce2arena_intro_seen', '1');
+  } catch {}
+  document.querySelector('.intro-overlay')?.classList.add('hidden');
+}
+
+function attachIntroEvents() {
+  document.querySelector('#enter-arena')?.addEventListener('click', () => dismissIntro(true));
+  document.querySelector('#skip-intro')?.addEventListener('click', () => dismissIntro(true));
+}
+
+function shell(body, active = 'dashboard', { showIntro = false } = {}) {
+  app.innerHTML = `
+    <div class="layout">
+      <aside class="sidebar">
+        <a class="brand" href="#dashboard">
+          <span class="brand-icon">⌘</span>
+          <span>CE2<span class="brand-muted"> / PYTHON</span><small>THE PRACTICE ARENA</small></span>
+        </a>
+        <div class="side-label">WORKSPACE</div>
+        <nav>
+          ${[
+            ['dashboard', '◫', 'Overview'],
+            ['practice', '◇', 'Practice'],
+            ['exam', '◷', 'Mock exam'],
+            ['mistakes', '↻', 'Mistake review'],
+            ['leaderboard', '♛', 'Leaderboard'],
+            ['learn', '✧', 'Python foundations'],
+            ['traplab', '⚡', 'Exam trap lab'],
+            ['revision', '▤', 'Quick revision'],
+          ].map(([id, icon, label]) => `<a href="#${id}" class="nav-link ${active === id ? 'active' : ''}"><span>${icon}</span>${label}</a>`).join('')}
+        </nav>
+        <div class="sidebar-foot"><span class="online-dot"></span> Offline ready <small>Progress saved on this device</small></div>
+      </aside>
+      <main class="main">
+        <header class="topbar">
+          <div class="crumb">ARENA <span>/</span> ${esc(active.toUpperCase())}</div>
+          <div class="top-right">
+            <span class="local-pill">◉ LOCAL MODE</span>
+            <span class="avatar">${esc((nickname || 'G')[0].toUpperCase())}</span>
+          </div>
+        </header>
+        <div class="content">${body}</div>
+      </main>
+    </div>
+    ${showIntro ? introMarkup() : ''}
+  `;
+  if (showIntro) attachIntroEvents();
+}
+
+function introMarkup() {
+  return `
+    <div class="intro-overlay">
+      <div class="intro-card">
+        <div class="intro-copy">
+          <span class="overline">WELCOME / CE2 PYTHON PRACTICE ARENA</span>
+          <h1>Practice smarter.<br/><em>Walk in confident.</em></h1>
+          <p>An exam-focused Python arena for first-sem students: faster revision, stronger fundamentals, trick-question training, and a smoother prep flow.</p>
+          <div class="intro-actions">
+            <button class="btn primary" id="enter-arena">Enter arena ↗</button>
+            <button class="btn secondary" id="skip-intro">Skip intro</button>
+          </div>
+          <div class="hero-caption"><span class="sparkle">✦</span> 3D welcome scene · smooth motion · lightweight static site</div>
+        </div>
+        <div class="intro-scene" aria-hidden="true">
+          <div class="scene-glow"></div>
+          <div class="orbit orbit-one"></div>
+          <div class="orbit orbit-two"></div>
+          <div class="intro-cube">
+            <div class="cube-face front">{ }</div>
+            <div class="cube-face back">if</div>
+            <div class="cube-face right">for</div>
+            <div class="cube-face left">[]</div>
+            <div class="cube-face top">Py</div>
+            <div class="cube-face bottom">CE2</div>
+          </div>
+          <div class="scene-chip chip-a">OUTPUT TRACING</div>
+          <div class="scene-chip chip-b">MOCK EXAM</div>
+          <div class="scene-chip chip-c">DEBUGGING</div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function dashboard() {
+  clearInterval(ticker);
+  const s = stats();
+  const recent = history();
+  const mistakes = [...mistakesSet()];
+  const weak = weakTopics();
+  const totalHard = bank.filter((q) => q.difficulty === 'hard').length;
+  shell(`
+    <div class="eyebrow">YOUR LEARNING SPACE <span class="status-dot"></span></div>
+    <section class="hero">
+      <div class="hero-copy">
+        <span class="overline">FUNDAMENTAL PROGRAMMING • CE2</span>
+        <h1>Learn the logic.<br/><em>Own the exam.</em></h1>
+        <p>Practice Python the way first-sem university tests actually feel: short code, output tracing, debugging, algorithms, pseudocode, and common trap questions.</p>
+        <div class="action-row">
+          <button class="btn primary" id="start-practice">Start practicing <span>↗</span></button>
+          <button class="btn secondary" id="start-exam">Take mock exam <span>↗</span></button>
+        </div>
+        <div class="hero-caption"><span class="sparkle">✦</span> ${bank.length} practice questions <span>·</span> ${totalHard} tougher exam-trap questions</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="code-top"><span>● ● ●</span><span>arena.py</span><span>↗</span></div>
+        <pre><span class="purple">def</span> <span class="aqua">crack_ce2</span>():
+    topics = [<span class="lime">"logic"</span>, <span class="lime">"tracing"</span>, <span class="lime">"debugging"</span>]
+    <span class="purple">for</span> topic <span class="purple">in</span> topics:
+        <span class="aqua">practice</span>(topic)
+    <span class="purple">return</span> <span class="lime">"exam ready"</span>
+
+<span class="muted"># less panic, more pattern recognition.</span></pre>
+        <div class="floating-chip">✓ FIRST-SEM STYLE TRAINING</div>
+      </div>
+    </section>
+    <section class="metrics">
+      <div class="metric"><span>QUESTIONS ATTEMPTED</span><strong>${s.attempted}</strong><small>Every answer counts ↗</small></div>
+      <div class="metric"><span>OVERALL ACCURACY</span><strong>${s.accuracy}<i>%</i></strong><small>Across all saved sessions</small></div>
+      <div class="metric"><span>MOCK EXAMS TAKEN</span><strong>${s.exams}</strong><small>60 questions · 45 minutes</small></div>
+      <div class="metric highlight-metric"><span>MISTAKES TO REVISIT</span><strong>${mistakes.length}</strong><a href="#mistakes">Review now →</a></div>
+    </section>
+    <div class="section-heading"><div><span class="eyebrow">CHOOSE YOUR PATH</span><h2>Train the way you need.</h2></div><span class="subtle">Build confidence, accuracy and speed.</span></div>
+    <section class="mode-grid">
+      <button class="mode-card" id="mode-practice"><span class="mode-symbol purple-bg">⌘</span><span class="mode-name">Quick practice <span>↗</span></span><span>10 randomized questions with instant feedback and explanations.</span><span class="tag">AT YOUR OWN PACE</span></button>
+      <button class="mode-card" id="mode-exam"><span class="mode-symbol teal-bg">◷</span><span class="mode-name">Exam simulation <span>↗</span></span><span>60 questions, 45-minute timer, score out of 15 marks.</span><span class="tag">REAL EXAM FEEL</span></button>
+      <button class="mode-card" id="mode-mistakes"><span class="mode-symbol amber-bg">↺</span><span class="mode-name">Mistake review <span>↗</span></span><span>Turn wrong answers into learning and close weak areas.</span><span class="tag">${mistakes.length} TO REVISIT</span></button>
+      <button class="mode-card" id="mode-learn"><span class="mode-symbol teal-bg">✧</span><span class="mode-name">Python foundations <span>↗</span></span><span>Lessons on syntax, algorithms, technical terms and core logic.</span><span class="tag">12 GUIDED LESSONS</span></button>
+      <button class="mode-card" id="mode-trap"><span class="mode-symbol purple-bg">⚡</span><span class="mode-name">Exam trap lab <span>↗</span></span><span>Special practice for short tricky questions and debugging traps.</span><span class="tag">HIGHER DIFFICULTY</span></button>
+      <button class="mode-card" id="mode-revision"><span class="mode-symbol amber-bg">▤</span><span class="mode-name">Quick revision <span>↗</span></span><span>Fast reminders for definitions, rules and common mistakes.</span><span class="tag">LAST-MINUTE READY</span></button>
+    </section>
+    <section class="lower-grid">
+      <div class="panel">
+        <div class="panel-head"><h3>Recent activity</h3><a href="#leaderboard">View scores →</a></div>
+        ${recent.length ? recent.slice(0, 5).map((r) => `
+          <div class="history-line">
+            <span class="history-icon">${r.mode === 'exam' ? '◷' : '◇'}</span>
+            <div><strong>${r.mode === 'exam' ? 'Mock exam' : 'Practice session'}</strong><small>${new Date(r.date).toLocaleDateString()} · ${r.answered} answered</small></div>
+            <b>${r.correct}/${r.total}</b>
+          </div>`).join('') : '<div class="empty-small">No saved attempts yet. Start with a practice round.</div>'}
+      </div>
+      <div class="panel">
+        <div class="panel-head"><h3>Weak-topic recommendations</h3><span class="eyebrow">PERSONALISED</span></div>
+        ${weak.length ? weak.map(([topic, row]) => `
+          <div class="focus-row">
+            <div><strong>${esc(topic)}</strong><small>${row.wrong} misses across ${row.total} attempts</small></div>
+            <button data-topic="${esc(topic)}">Practice →</button>
+          </div>`).join('') : '<div class="empty-small">Practice a few questions to unlock topic-wise recommendations.</div>'}
+      </div>
+    </section>
+    <footer class="footer">CE2 PYTHON PRACTICE ARENA <span>Local-only web app. No signup, no server, no secret keys — just practice.</span></footer>
+  `, 'dashboard', { showIntro: shouldShowIntro() });
+
+  const go = (hash) => () => { location.hash = hash; };
+  document.querySelector('#start-practice').onclick = go('practice');
+  document.querySelector('#start-exam').onclick = go('exam');
+  document.querySelector('#mode-practice').onclick = go('practice');
+  document.querySelector('#mode-exam').onclick = go('exam');
+  document.querySelector('#mode-mistakes').onclick = go('mistakes');
+  document.querySelector('#mode-learn').onclick = go('learn');
+  document.querySelector('#mode-trap').onclick = go('traplab');
+  document.querySelector('#mode-revision').onclick = go('revision');
+  document.querySelectorAll('[data-topic]').forEach((button) => {
+    button.onclick = () => {
+      currentTopic = button.dataset.topic;
+      location.hash = 'practice';
+    };
+  });
+}
+
+function setup(kind) {
+  clearInterval(ticker);
+  const exam = kind === 'exam';
+  shell(`
+    <div class="eyebrow">${exam ? 'EXAM SIMULATION' : 'PRACTICE LAB'}</div>
+    <div class="page-title"><h1>${exam ? 'Your next mock exam.' : 'Customize your practice.'}</h1><p>${exam ? 'Exactly 60 MCQs · 45-minute timer · score out of 15 marks.' : 'Choose topic and difficulty, then get a fresh 10-question practice set.'}</p></div>
+    <div class="setup-card">
+      <div class="setup-icon">${exam ? '◷' : '◇'}</div>
+      <h2>${exam ? 'Ready when you are.' : 'Build your own session.'}</h2>
+      ${exam ? '<div class="info-strip">No immediate feedback during the exam. The test auto-submits when the timer reaches zero.</div>' : `
+        <label class="field-label" for="topic">TOPIC</label>
+        <select id="topic">
+          <option value="all">All topics — mixed practice</option>
+          ${topics().map((topic) => `<option value="${esc(topic)}" ${currentTopic === topic ? 'selected' : ''}>${esc(topic)}</option>`).join('')}
+        </select>
+        <label class="field-label" for="difficulty">DIFFICULTY</label>
+        <select id="difficulty">
+          <option value="all">All difficulties</option>
+          <option value="easy" ${currentDifficulty === 'easy' ? 'selected' : ''}>Easy</option>
+          <option value="medium" ${currentDifficulty === 'medium' ? 'selected' : ''}>Medium</option>
+          <option value="hard" ${currentDifficulty === 'hard' ? 'selected' : ''}>Hard / exam traps</option>
+        </select>
+      `}
+      <button class="btn primary wide" id="begin">${exam ? 'Begin 45-minute exam' : 'Begin practice'} ↗</button>
+    </div>
+  `, kind);
+
+  document.querySelector('#begin').onclick = () => {
+    try {
+      if (!exam) {
+        currentTopic = document.querySelector('#topic').value;
+        currentDifficulty = document.querySelector('#difficulty').value;
+      }
+      const pool = bank.filter((q) =>
+        (exam || currentTopic === 'all' || q.topic === currentTopic) &&
+        (exam || currentDifficulty === 'all' || q.difficulty === currentDifficulty)
+      );
+      const count = exam ? EXAM_SIZE : Math.min(10, pool.length);
+      if (!pool.length || count < 1) throw new Error('No questions available for the selected filters.');
+      quiz = exam ? createBalancedExam(bank) : createQuiz(bank, {
+        count,
+        topic: exam ? 'all' : currentTopic,
+        difficulty: exam ? 'all' : currentDifficulty,
+      });
+      answers = Array(quiz.length).fill(null);
+      index = 0;
+      mode = kind;
+      startedAt = Date.now();
+      deadline = exam ? startedAt + EXAM_SECONDS * 1000 : 0;
+      latestResult = null;
+      persistActive();
+      location.hash = 'session';
+      renderQuestion();
+    } catch (error) {
+      alert(error.message);
+    }
+  };
+}
+
+function currentQuestion() {
+  return bank.find((item) => item.id === quiz[index].id);
+}
+
+function persistActive() {
+  write('active', { quiz, answers, index, mode, deadline, startedAt });
+}
+
+function renderQuestion() {
+  if (!quiz) {
+    dashboard();
+    return;
+  }
+  if (mode === 'exam' && secondsLeft(deadline) === 0) {
+    finish(true);
+    return;
+  }
+
+  const q = currentQuestion();
+  const selected = answers[index];
+  const correctOption = quiz[index].options.findIndex((opt) => opt.originalIndex === q.correct);
+  const locked = mode !== 'exam' && selected !== null;
+  const answeredCount = answers.filter((value) => value !== null).length;
+
+  shell(`
+    <div class="quiz-heading">
+      <button class="back-link" id="quit">← Leave session</button>
+      <span class="quiz-kind">${mode === 'exam' ? '◷ LIVE EXAM' : '◇ PRACTICE MODE'}</span>
+    </div>
+    <div class="quiz-top">
+      <div><div class="eyebrow">QUESTION ${index + 1} OF ${quiz.length}</div><h2>${mode === 'exam' ? 'Mock examination' : 'Practice session'}</h2></div>
+      <div class="quiz-info">
+        ${mode === 'exam' ? `<span class="timer" id="timer">◷ ${formatTime(secondsLeft(deadline))}</span>` : '<span class="small-info">Instant feedback ON</span>'}
+        <span class="small-info">${answeredCount}/${quiz.length} answered</span>
+      </div>
+    </div>
+    <div class="progress-track"><div style="width:${((index + 1) / quiz.length) * 100}%"></div></div>
+    <div class="question-layout">
+      <article class="question-card">
+        <div class="question-meta"><span class="topic-pill">${esc(q.topic)}</span><span>${esc(q.difficulty.toUpperCase())}</span></div>
+        <h3>${esc(q.prompt)}</h3>
+        ${q.code ? `<div class="code-block"><div class="code-label">PYTHON <span>● ● ●</span></div><pre><code>${esc(q.code)}</code></pre></div>` : ''}
+        <div class="choices">
+          ${quiz[index].options.map((option, optionIndex) => `
+            <button class="choice ${selected === optionIndex ? 'chosen' : ''} ${locked && optionIndex === correctOption ? 'correct' : ''} ${locked && selected === optionIndex && optionIndex !== correctOption ? 'wrong' : ''}" data-choice="${optionIndex}" ${locked ? 'disabled' : ''}>
+              <span class="choice-letter">${'ABCD'[optionIndex]}</span>
+              <span>${esc(option.text)}</span>
+              ${locked && optionIndex === correctOption ? '<b>✓</b>' : locked && selected === optionIndex ? '<b>✕</b>' : ''}
+            </button>`).join('')}
+        </div>
+        ${locked ? `
+          <div class="feedback ${selected === correctOption ? 'positive' : 'negative'}">
+            <strong>${selected === correctOption ? '✓ Correct! Nice work.' : '✕ Not quite. Learn the idea.'}</strong>
+            <p>${esc(q.explanation)}</p>
+          </div>
+        ` : ''}
+        <div class="question-actions">
+          <button class="btn secondary" id="prev" ${index === 0 ? 'disabled' : ''}>← Previous</button>
+          <button class="btn primary" id="next">${index === quiz.length - 1 ? 'Finish / submit' : 'Next question →'}</button>
+        </div>
+      </article>
+      <aside class="navigator">
+        <div class="panel-head"><h3>Question map</h3><span>${answeredCount}/${quiz.length}</span></div>
+        <div class="number-grid">${quiz.map((_, i) => `<button class="number ${i === index ? 'current' : ''} ${answers[i] !== null ? 'answered' : ''}" data-index="${i}" aria-label="Go to question ${i + 1}">${i + 1}</button>`).join('')}</div>
+        <div class="legend"><span>● Current</span><span>● Answered</span><span>○ Not answered</span></div>
+        ${mode === 'exam' ? '<p class="navigator-note">Answers stay hidden until submission.</p>' : '<p class="navigator-note">Choose an option to reveal the explanation.</p>'}
+      </aside>
+    </div>
+  `, mode);
+
+  document.querySelectorAll('[data-choice]').forEach((button) => {
+    button.onclick = () => {
+      answers[index] = Number(button.dataset.choice);
+      persistActive();
+      renderQuestion();
+    };
+  });
+  document.querySelectorAll('[data-index]').forEach((button) => {
+    button.onclick = () => {
+      index = Number(button.dataset.index);
+      persistActive();
+      renderQuestion();
+    };
+  });
+  document.querySelector('#prev').onclick = () => {
+    index -= 1;
+    persistActive();
+    renderQuestion();
+  };
+  document.querySelector('#next').onclick = () => {
+    if (index === quiz.length - 1) confirmSubmit();
+    else {
+      index += 1;
+      persistActive();
+      renderQuestion();
+    }
+  };
+  document.querySelector('#quit').onclick = () => {
+    if (confirm('Leave this session? Your current attempt will be discarded.')) {
+      clearInterval(ticker);
+      remove('active');
+      quiz = null;
+      answers = [];
+      location.hash = 'dashboard';
+    }
+  };
+
+  clearInterval(ticker);
+  if (mode === 'exam') {
+    ticker = setInterval(() => {
+      const left = secondsLeft(deadline);
+      const timer = document.querySelector('#timer');
+      if (timer) timer.textContent = `◷ ${formatTime(left)}`;
+      if (left === 0) finish(true);
+    }, 500);
+  }
+}
+
+function confirmSubmit() {
+  if (mode === 'exam') {
+    if (confirm('Submit the exam now? Unanswered questions will score zero.')) finish(false);
+  } else {
+    finish(false);
+  }
+}
+
+function finish(autoSubmitted = false) {
+  clearInterval(ticker);
+  if (!quiz) return;
+  const scored = scoreQuiz(bank, quiz, answers);
+  const timeTaken = Math.min(mode === 'exam' ? EXAM_SECONDS : 999999, Math.max(0, Math.round((Date.now() - startedAt) / 1000)));
+  const result = {
+    id: Date.now(),
+    date: new Date().toISOString(),
+    mode,
+    correct: scored.correct,
+    incorrect: scored.incorrect,
+    unanswered: scored.unanswered,
+    answered: scored.correct + scored.incorrect,
+    total: quiz.length,
+    marks: scored.marks,
+    percent: scored.percent,
+    timeTaken,
+    nickname: mode === 'exam' ? nickname : '',
+    details: scored.details,
+    autoSubmitted,
+  };
+
+  const mistakes = mistakesSet();
+  for (const detail of scored.details) {
+    if (detail.isCorrect) mistakes.delete(detail.question.id);
+    else mistakes.add(detail.question.id);
+  }
+  write('mistakes', [...mistakes]);
+  saveResult(result);
+  latestResult = result;
+  remove('active');
+  quiz = null;
+  answers = [];
+  location.hash = 'results';
+  renderResults();
+}
+
+function renderResults() {
+  const result = latestResult || history()[0];
+  if (!result) {
+    dashboard();
+    return;
+  }
+  shell(`
+    <section class="result-hero">
+      <div class="result-icon">${result.mode === 'exam' ? '◷' : '◇'}</div>
+      <h1>${result.mode === 'exam' ? 'Mock exam complete.' : 'Practice complete.'}</h1>
+      <p>${result.autoSubmitted ? 'Time expired, so the exam was submitted automatically.' : 'Your session is complete. Review every answer and learn from every mistake.'}</p>
+      <div class="big-score">${result.marks.toFixed(2)}<small> / ${result.mode === 'exam' ? '15' : (result.total * 0.25).toFixed(2)}</small></div>
+    </section>
+    <div class="result-metrics">
+      <div class="metric"><span>CORRECT</span><strong>${result.correct}</strong></div>
+      <div class="metric"><span>INCORRECT</span><strong>${result.incorrect}</strong></div>
+      <div class="metric"><span>UNANSWERED</span><strong>${result.unanswered}</strong></div>
+      <div class="metric"><span>ACCURACY</span><strong>${result.percent}%</strong></div>
+      <div class="metric"><span>TIME TAKEN</span><strong>${formatTime(result.timeTaken)}</strong></div>
+    </div>
+    ${result.mode === 'exam' ? `
+      <div class="name-card panel">
+        <div><h3>Save this score to the leaderboard</h3><p>This leaderboard is stored only on this browser.</p></div>
+        <div class="name-entry">
+          <input id="nickname-input" maxlength="24" placeholder="Enter your name" value="${esc(result.nickname || nickname)}" aria-label="Leaderboard name" />
+          <button class="btn primary" id="save-name">Save name</button>
+        </div>
+        <small id="name-status">${result.nickname ? `Saved as ${esc(result.nickname)}.` : 'Enter your name to appear on the leaderboard.'}</small>
+      </div>
+    ` : ''}
+    <div class="result-controls">
+      <button class="btn primary" id="retake">${result.mode === 'exam' ? 'Retake mock exam' : 'Practice again'} ↗</button>
+      <button class="btn secondary" id="home">Back to dashboard</button>
+    </div>
+    <div class="section-heading"><div><span class="eyebrow">LEARN FROM EACH ANSWER</span><h2>Full answer review</h2></div></div>
+    <div class="review-list">
+      ${result.details.map((detail, i) => `
+        <details class="review-entry">
+          <summary>
+            <span class="${detail.isCorrect ? 'ok' : 'bad'}">${detail.isCorrect ? '✓' : detail.selected === null ? '–' : '✕'}</span>
+            <span>Q${i + 1}. ${esc(detail.question.prompt)}${detail.question.code ? ' (code question)' : ''}</span>
+            <span class="review-topic">${esc(detail.question.topic)}</span>
+          </summary>
+          <div class="review-body">
+            ${detail.question.code ? `<pre>${esc(detail.question.code)}</pre>` : ''}
+            <p><b>Your answer:</b> ${detail.selected === null ? 'Unanswered' : esc(detail.options[detail.selected]?.text)}</p>
+            <p><b>Correct answer:</b> ${esc(detail.options[detail.correctOption].text)}</p>
+            <p>${esc(detail.question.explanation)}</p>
+          </div>
+        </details>
+      `).join('')}
+    </div>
+  `, 'dashboard');
+
+  document.querySelector('#retake').onclick = () => { location.hash = result.mode === 'exam' ? 'exam' : 'practice'; };
+  document.querySelector('#home').onclick = () => { location.hash = 'dashboard'; };
+  document.querySelector('#save-name')?.addEventListener('click', () => {
+    const value = document.querySelector('#nickname-input').value.trim();
+    const status = document.querySelector('#name-status');
+    if (value.length < 2) {
+      status.textContent = 'Enter at least 2 characters.';
+      return;
+    }
+    nickname = value;
+    write('nickname', nickname);
+    result.nickname = nickname;
+    const all = history();
+    const row = all.find((item) => item.id === result.id);
+    if (row) {
+      row.nickname = nickname;
+      write('history', all);
+    }
+    status.textContent = `Saved as ${nickname} on this device ✓`;
+  });
+}
+
+function leader() {
+  const rows = leaderboard();
+  shell(`
+    <div class="eyebrow">PERSONAL RECORDS</div>
+    <div class="page-title"><h1>Local leaderboard.</h1><p>These are the best named mock-exam scores saved on this device only. They are not shared online.</p></div>
+    <div class="panel leaderboard-panel">
+      <div class="table-row table-head"><span>RANK</span><span>NAME</span><span>SCORE</span><span>TIME</span></div>
+      ${rows.length ? rows.map((row, i) => `
+        <div class="table-row">
+          <span class="rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + (i + 1)}</span>
+          <strong>${esc(row.nickname)}</strong>
+          <b>${row.marks.toFixed(2)} / 15</b>
+          <span>${formatTime(row.timeTaken)}</span>
+        </div>`).join('') : '<div class="empty-small">No named exam scores yet. Finish a mock exam and save your name.</div>'}
+    </div>
+    <div class="info-strip">Clearing browser storage removes these entries. Because this project is frontend-only, this board is local rather than shared between devices.</div>
+  `, 'leaderboard');
+}
+
+function mistakesView() {
+  const ids = [...mistakesSet()];
+  const pool = bank.filter((item) => ids.includes(item.id));
+  shell(`
+    <div class="eyebrow">FOCUSED IMPROVEMENT</div>
+    <div class="page-title"><h1>Mistake review.</h1><p>Everything you missed or skipped is collected here for targeted revision.</p></div>
+    <div class="setup-card">
+      <div class="setup-icon">↺</div>
+      <h2>${pool.length} questions ready for review</h2>
+      <p>${pool.length ? 'Run a fresh session from your mistakes only.' : 'No mistakes stored right now. Wrong or skipped questions will appear here automatically.'}</p>
+      <button class="btn primary wide" id="begin-mistakes" ${pool.length ? '' : 'disabled'}>Review mistakes ↗</button>
+    </div>
+  `, 'mistakes');
+  document.querySelector('#begin-mistakes').onclick = () => {
+    quiz = createQuiz(pool, { count: Math.min(10, pool.length) });
+    answers = Array(quiz.length).fill(null);
+    index = 0;
+    mode = 'practice';
+    startedAt = Date.now();
+    deadline = 0;
+    latestResult = null;
+    persistActive();
+    location.hash = 'session';
+    renderQuestion();
+  };
+}
+
+function revision() {
+  shell(`
+    <div class="eyebrow">LAST-MINUTE HELP</div>
+    <div class="page-title"><h1>Quick revision sheet.</h1><p>Important reminders for CE2: short, crisp, and exam-oriented.</p></div>
+    <div class="notes-grid">
+      ${revisionCards.map(([title, text], i) => `
+        <article class="note-card">
+          <span class="note-index">${String(i + 1).padStart(2, '0')}</span>
+          <h3>${esc(title)}</h3>
+          <p>${esc(text)}</p>
+        </article>
+      `).join('')}
+    </div>
+    <button class="btn primary" id="revise-practice">Practise now ↗</button>
+  `, 'revision');
+  document.querySelector('#revise-practice').onclick = () => { location.hash = 'practice'; };
+}
+
+function learn() {
+  shell(`
+    <div class="eyebrow">LEARN → TRY → MASTER</div>
+    <section class="lesson-hero">
+      <span class="overline">YOUR PYTHON FIELD GUIDE</span>
+      <h1>Start from basics.<br/><em>Train for the real paper.</em></h1>
+      <p>Beginner-friendly lessons covering Python fundamentals, lab-style logic, algorithms, pseudocode, mutable vs immutable objects, and technical terms that often appear in CE2 and viva questions.</p>
+      <div class="lesson-hero-stats"><span>${lessons.length} LESSONS</span><span>CODE EXAMPLES</span><span>COMMON EXAM TRAPS</span></div>
+    </section>
+    <div class="section-heading"><div><span class="eyebrow">THE LEARNING PATH</span><h2>Python foundations</h2></div></div>
+    <div class="lesson-list">
+      ${lessons.map((lesson, i) => `
+        <details class="lesson-item" ${i === 0 ? 'open' : ''}>
+          <summary>
+            <span class="lesson-number">${String(i + 1).padStart(2, '0')}</span>
+            <strong>${esc(lesson.title)}</strong>
+            <span class="lesson-arrow">↗</span>
+          </summary>
+          <div class="lesson-detail">
+            <p>${esc(lesson.description)}</p>
+            <div class="lesson-code-header"><span>● ● ●</span><span>example.py</span><span>PYTHON 3</span></div>
+            <pre>${esc(lesson.code)}</pre>
+            <div class="lesson-trap"><b>⚡ EXAM TRAP</b><p>${esc(lesson.trap)}</p></div>
+            <button class="btn primary lesson-practice" data-lesson="${i}">Practise this area ↗</button>
+          </div>
+        </details>
+      `).join('')}
+    </div>
+  `, 'learn');
+  document.querySelectorAll('[data-lesson]').forEach((button) => {
+    button.onclick = () => {
+      currentTopic = TOPIC_PRACTICE_MAP[Number(button.dataset.lesson)] || 'all';
+      currentDifficulty = 'all';
+      if (!topics().includes(currentTopic)) currentTopic = 'all';
+      location.hash = 'practice';
+    };
+  });
+}
+
+function traplab() {
+  const pool = bank.filter((q) =>
+    q.difficulty === 'hard' ||
+    ['Syntax & debugging', 'Errors & exceptions', 'Debugging', 'Technical terms', 'Lab programs', 'Algorithms & pseudocode'].includes(q.topic) ||
+    String(q.id).startsWith('lab-')
+  );
+  shell(`
+    <div class="eyebrow">THE DEBUGGING CHALLENGE</div>
+    <section class="trap-hero">
+      <span class="overline">EXAM TRAP LAB / HARD MODE</span>
+      <h1>Catch the trap.<br/><em>Beat the confusion.</em></h1>
+      <p>Short but tricky first-sem style questions: missing colons, wrong brackets, output tracing, type conversion, pseudocode logic, mutable-vs-immutable confusion, and lab-style code.</p>
+      <div class="lesson-hero-stats"><span>${pool.length} CHALLENGES</span><span>IMMEDIATE FEEDBACK</span><span>NO TIME PRESSURE</span></div>
+      <button class="btn primary" id="play-traps">Take a 10-question challenge ↗</button>
+    </section>
+    <div class="section-heading"><div><span class="eyebrow">WHAT YOU'LL FACE</span><h2>Trap categories</h2></div></div>
+    <div class="trap-grid">
+      <article><span>01 / SYNTAX</span><h3>Colon, bracket and indentation slips</h3><pre>if score >= 10
+    print("Pass")</pre><p>Spot whether the problem is syntax, indentation, or logic.</p></article>
+      <article><span>02 / TYPES</span><h3>input() returns text</h3><pre>a = input()
+b = input()
+print(a + b)</pre><p>Know when Python concatenates strings and when explicit conversion is required.</p></article>
+      <article><span>03 / F-STRINGS</span><h3>Expressions inside braces</h3><pre>x = 5
+print(f"{x + 2}")</pre><p>F-strings evaluate expressions inside braces and then convert the result to text.</p></article>
+      <article><span>04 / MUTABILITY</span><h3>One list, two names</h3><pre>a = [1, 2]
+b = a
+b.append(3)
+print(a)</pre><p>Understand how aliasing affects lists and why immutable types behave differently.</p></article>
+      <article><span>05 / PSEUDOCODE</span><h3>Trace the logic</h3><pre>INPUT n
+sum = 0
+FOR i = 1 TO n
+    sum = sum + i</pre><p>Translate language-independent steps into actual meaning.</p></article>
+      <article><span>06 / LAB LOGIC</span><h3>Digits, prime, palindrome</h3><pre>digit = n % 10
+n = n // 10</pre><p>Recognize the common patterns behind number-based lab programs.</p></article>
+    </div>
+  `, 'traplab');
+  document.querySelector('#play-traps').onclick = () => {
+    quiz = createQuiz(pool, { count: Math.min(10, pool.length) });
+    answers = Array(quiz.length).fill(null);
+    index = 0;
+    mode = 'practice';
+    startedAt = Date.now();
+    deadline = 0;
+    latestResult = null;
+    persistActive();
+    location.hash = 'session';
+    renderQuestion();
+  };
+}
+
+function route() {
+  const hash = location.hash.slice(1) || 'dashboard';
+  if (quiz && hash !== 'session') {
+    if (!confirm('Leave your current session and discard this attempt?')) {
+      location.hash = 'session';
+      return;
+    }
+    clearInterval(ticker);
+    quiz = null;
+    answers = [];
+    remove('active');
+  }
+
+  if (hash === 'practice') setup('practice');
+  else if (hash === 'exam') setup('exam');
+  else if (hash === 'session') renderQuestion();
+  else if (hash === 'results') renderResults();
+  else if (hash === 'mistakes') mistakesView();
+  else if (hash === 'leaderboard') leader();
+  else if (hash === 'learn') learn();
+  else if (hash === 'traplab') traplab();
+  else if (hash === 'revision') revision();
+  else dashboard();
+}
+
+async function init() {
+  try {
+    const response = await fetch('data/questions.json');
+    if (!response.ok) throw new Error('Could not fetch question bank.');
+    bank = await response.json();
+    window.addEventListener('hashchange', route);
+
+    const active = read('active', null);
+    if (active?.quiz?.length && active.quiz.every((item) => bank.some((q) => q.id === item.id))) {
+      ({ quiz, answers, index, mode, deadline, startedAt } = active);
+      if (mode === 'exam' && secondsLeft(deadline) === 0) {
+        finish(true);
+        return;
+      }
+      location.hash = 'session';
+      renderQuestion();
+      return;
+    }
+
+    route();
+  } catch (error) {
+    app.innerHTML = `
+      <div class="fatal panel">
+        <h1>Unable to load the arena</h1>
+        <p>${esc(error.message)}</p>
+        <p>Run this app through a local server or GitHub Pages, not a file:// URL.</p>
+        <button class="btn primary" onclick="location.reload()">Try again</button>
+      </div>
+    `;
+  }
+}
+
+init();

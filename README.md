@@ -1,54 +1,62 @@
-# CE2 Python Practice Arena
+# CE2 Python Practice Arena — V3
 
-Free, static, mobile-first Python exam practice site. No sign-in, backend, paid APIs, or database required.
+A premium, mobile-first, fully static Python CE2 practice website.
 
-## Features
+## What's included
 
-- 250+ structured MCQs, shuffled questions and shuffled answer options
-- 10-question guided practice with explanations; topic and difficulty filters
-- 60-question mock exams, 45-minute timer, score up to 15, automatic timeout submission, answer review
-- Mistake review, revision notes, history, progress stats, weak-area recommendations
-- Named, **local-only** leaderboard. All saved names/scores remain in each student's browser and **cannot be seen by other devices**. An online/shared leaderboard requires a server or third-party service.
+- 379 MCQs covering core Python, tricky output questions, f-strings, `input()`, technical terms, mutability, algorithms, pseudocode and lab-style programs.
+- 60-question timed exams (45 minutes, 15 marks total), with a **fixed difficulty distribution of 18 easy + 30 medium + 12 hard**.
+- Unlimited topic-wise practice and exam retakes; options and questions shuffled independently each session.
+- Instant explanations in practice, full answer review after exams, mistake-review mode.
+- 12 concise Python Foundations lessons, an Exam Trap Lab, and quick-revision notes.
+- CSS-based animated 3D welcome cube (no external 3D library; reduced-motion compatible), refined button interactions.
+- Saves history, exam attempts, nickname and mistakes in local browser storage.
+- A **local-only leaderboard**; names and scores do not sync between devices. No Supabase, server, runtime AI or login.
+
+### Reference material
+
+The V3 question categories and learning content were informed by the uploaded university lab bundle, including programs for even/odd, divisibility, grading, loops, digits, factorial, palindrome, prime, perfect and Armstrong numbers. Lab material informs the practice scope; these are **not official exam questions**.
 
 ## Run locally
 
-You need Python 3, or any static development server. From this folder:
+Requires Python 3 and a modern browser.
 
-```sh
+```bash
 python -m http.server 5173
 ```
 
-Open http://localhost:5173 . Do not open `index.html` using `file://`; the question bank is fetched over HTTP.
+Then open `http://localhost:5173/`. Don't double-click `index.html` from your filesystem because the browser blocks JSON loading in that context.
 
-## Tests and build
+Node.js is only needed for tests/build:
 
-Install Node.js 20+. No dependencies or npm install needed.
-
-```sh
+```bash
 npm test
-npm run check
 npm run build
 ```
 
-`dist/` is the published static folder. The question generator is `scripts/generate_bank.py` and requires Python 3; it checks printed outputs by executing the snippets. **Do not run arbitrary user-submitted question code** in that generator.
+## GitHub Pages deployment — easiest
 
-## GitHub Pages deployment (free)
+1. Extract the ZIP and upload the folder **contents** to the root of your existing GitHub repository, preserving `src/`, `data/`, `tests/`, `scripts/` and other paths.
+2. Go to **Settings → Pages**.
+3. Select **Deploy from a branch**, `main`, `/(root)`, then Save.
+4. Wait for Pages to finish; visit your existing repository Pages URL.
+5. `index.html` uses relative paths, so it works under a GitHub repository subpath.
 
-1. Create a new **public** GitHub repository such as `ce2-python-practice-arena`.
-2. Upload the ZIP's **contents** (not the ZIP itself) to the repository root, including `.github/workflows/deploy.yml`.
-3. Commit to the `main` branch.
-4. In **Settings → Pages → Build and deployment**, set **Source: GitHub Actions**.
-5. Go to **Actions** and verify the `Deploy static arena` workflow succeeds. The Pages URL will look like `https://USERNAME.github.io/ce2-python-practice-arena/`.
-6. For future edits, commit and push again; the workflow redeploys automatically.
+For updates, replace files with the same relative paths and commit.
 
-## User data and privacy
+## How questions work
 
-Scores, answers, history and nickname are persisted in browser localStorage. Clearing site data, using incognito, or changing devices loses access to that copy. The exam timer deadline is saved and recalculated from the real time after refresh, but the app cannot submit or notify while the tab is closed; submission occurs when the app is opened again. This is not a proctored or tamper-proof exam.
+- Questions live in `data/questions.json`, separate from UI components.
+- Each question has `id`, `topic`, `prompt`, four `options`, `correct` (zero-based index), `explanation`, `difficulty`, and optional `code`.
+- Engine lives in `src/engine.js`, UI in `src/app.js`, styling in `src/style.css`, persistence in `src/storage.js`.
+- `scripts/build.mjs` copies the static deployable files into `dist/`.
+- The exam uses 18 easy, 30 medium and 12 hard questions per 60 MCQ attempt.
 
-## Content and testing limitations
+## Verification and limitations
 
-Questions are **original practice questions, not official CE2 questions**. Generated output-tracing examples were run with Python at generation time. Automated checks validate structure, unique prompts/code pairs, quiz selection, scoring and timer arithmetic. Browser visual regression, Safari hardware testing, full independent educational peer review of explanations, accessibility audit, and full exam end-to-end automated browser coverage have **not** been performed. For a high-stakes exam, independently review question content.
-
-## Adding questions
-
-Edit `data/questions.json` with `{ "id": "unique-id", "topic": "...", "difficulty": "easy", "prompt": "...", "code": "optional Python", "options": ["A","B","C","D"], "correct": 0, "explanation": "..." }`. `correct` is zero-based. Run `npm test` after changes.
+- Automated Node tests validate the bank schema/uniqueness, exam maximum score, unanswered scoring, shuffling, timer calculations, and difficulty distribution.
+- App JavaScript syntax and static build are checked before delivery.
+- Original and new questions need additional independent editorial review; passing schema tests does **not** prove each explanation is pedagogically perfect.
+- Full physical-device (iPhone) and browser end-to-end QA was not completed in this environment.
+- The leaderboard exists only in localStorage; clearing browser data deletes local results. There is no cross-device or anti-cheat synchronization.
+- Questions are revision material, not sourced from an official CE2 examination.
