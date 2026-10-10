@@ -1,0 +1,3688 @@
+[
+  {
+    "id": "py-001",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "5",
+      "10",
+      "0",
+      "8"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '8'.",
+    "difficulty": "medium",
+    "code": "x = 2\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-002",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "2",
+      "0",
+      "0.6666666666666666"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 2\nprint(x // 3)"
+  },
+  {
+    "id": "py-003",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "3",
+      "1",
+      "2"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 2\nprint(x % 3)"
+  },
+  {
+    "id": "py-004",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "6",
+      "9",
+      "11"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '9'.",
+    "difficulty": "medium",
+    "code": "x = 3\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-005",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1.0",
+      "0",
+      "2",
+      "1"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '1'.",
+    "difficulty": "medium",
+    "code": "x = 3\nprint(x // 3)"
+  },
+  {
+    "id": "py-006",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "2",
+      "3",
+      "0"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 3\nprint(x % 3)"
+  },
+  {
+    "id": "py-007",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "14",
+      "10",
+      "0"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '10'.",
+    "difficulty": "medium",
+    "code": "x = 4\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-008",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1.3333333333333333",
+      "0",
+      "1",
+      "2"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1'.",
+    "difficulty": "medium",
+    "code": "x = 4\nprint(x // 3)"
+  },
+  {
+    "id": "py-009",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "4",
+      "0",
+      "2"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '1'.",
+    "difficulty": "medium",
+    "code": "x = 4\nprint(x % 3)"
+  },
+  {
+    "id": "py-010",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "8",
+      "17",
+      "11",
+      "16"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '11'.",
+    "difficulty": "medium",
+    "code": "x = 5\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-011",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "1.6666666666666667",
+      "0",
+      "1"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '1'.",
+    "difficulty": "medium",
+    "code": "x = 5\nprint(x // 3)"
+  },
+  {
+    "id": "py-012",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "5",
+      "1",
+      "2"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 5\nprint(x % 3)"
+  },
+  {
+    "id": "py-013",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "20",
+      "18",
+      "12",
+      "9"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '12'.",
+    "difficulty": "medium",
+    "code": "x = 6\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-014",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "3",
+      "2.0",
+      "2"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 6\nprint(x // 3)"
+  },
+  {
+    "id": "py-015",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "2",
+      "1",
+      "6"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 6\nprint(x % 3)"
+  },
+  {
+    "id": "py-016",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "23",
+      "13",
+      "10",
+      "20"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '13'.",
+    "difficulty": "medium",
+    "code": "x = 7\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-017",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2.3333333333333335",
+      "3",
+      "1",
+      "2"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 7\nprint(x // 3)"
+  },
+  {
+    "id": "py-018",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "0",
+      "1",
+      "7"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1'.",
+    "difficulty": "medium",
+    "code": "x = 7\nprint(x % 3)"
+  },
+  {
+    "id": "py-019",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "26",
+      "11",
+      "22",
+      "14"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '14'.",
+    "difficulty": "medium",
+    "code": "x = 8\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-020",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "2.6666666666666665",
+      "4",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 8\nprint(x // 3)"
+  },
+  {
+    "id": "py-021",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "8",
+      "1",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 8\nprint(x % 3)"
+  },
+  {
+    "id": "py-022",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "15",
+      "29",
+      "12",
+      "24"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '15'.",
+    "difficulty": "medium",
+    "code": "x = 9\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-023",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3.0",
+      "4",
+      "0",
+      "3"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "x = 9\nprint(x // 3)"
+  },
+  {
+    "id": "py-024",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "9",
+      "0",
+      "3"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 9\nprint(x % 3)"
+  },
+  {
+    "id": "py-025",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "13",
+      "16",
+      "26",
+      "32"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '16'.",
+    "difficulty": "medium",
+    "code": "x = 10\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-026",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3.3333333333333335",
+      "5",
+      "3",
+      "1"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "x = 10\nprint(x // 3)"
+  },
+  {
+    "id": "py-027",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "10",
+      "0",
+      "3",
+      "1"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '1'.",
+    "difficulty": "medium",
+    "code": "x = 10\nprint(x % 3)"
+  },
+  {
+    "id": "py-028",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "28",
+      "35",
+      "17",
+      "14"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '17'.",
+    "difficulty": "medium",
+    "code": "x = 11\ny = 3\nprint(x + y * 2)"
+  },
+  {
+    "id": "py-029",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "5",
+      "3.6666666666666665",
+      "3",
+      "2"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "x = 11\nprint(x // 3)"
+  },
+  {
+    "id": "py-030",
+    "topic": "Variables & operators",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "3",
+      "1",
+      "11"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "x = 11\nprint(x % 3)"
+  },
+  {
+    "id": "py-031",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 2, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "Both conditions must be true for `and`. Here 2 >= 5 is False and 2 < 8 is True.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-032",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 2, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-033",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 2, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-034",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 3, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "Both conditions must be true for `and`. Here 3 >= 5 is False and 3 < 8 is True.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-035",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 3, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-036",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 3, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-037",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 4, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "Both conditions must be true for `and`. Here 4 >= 5 is False and 4 < 8 is True.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-038",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 4, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-039",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 4, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-040",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 5, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "Both conditions must be true for `and`. Here 5 >= 5 is True and 5 < 8 is True.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-041",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 5, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-042",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 5, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-043",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 6, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "Both conditions must be true for `and`. Here 6 >= 5 is True and 6 < 8 is True.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-044",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 6, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-045",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 6, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-046",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 7, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "Both conditions must be true for `and`. Here 7 >= 5 is True and 7 < 8 is True.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-047",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 7, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-048",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 7, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-049",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 8, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "Both conditions must be true for `and`. Here 8 >= 5 is True and 8 < 8 is False.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-050",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 8, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-051",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 8, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-052",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 9, what does `x >= 5 and x < 8` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "Both conditions must be true for `and`. Here 9 >= 5 is True and 9 < 8 is False.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-053",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 9, what does `x < 4 or x > 7` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`or` is true when at least one condition is true.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-054",
+    "topic": "Boolean & comparison",
+    "prompt": "For x = 9, what does `not (x == 6)` evaluate to?",
+    "options": [
+      "True",
+      "False",
+      "None",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "`not` reverses the Boolean result of the comparison.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-055",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "both",
+      "odd",
+      "(no output)",
+      "even"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'odd'.",
+    "difficulty": "medium",
+    "code": "x = 1\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-056",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "C",
+      "D",
+      "B",
+      "A"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is 'C'.",
+    "difficulty": "medium",
+    "code": "marks = 10\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-057",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "low",
+      "high",
+      "mid",
+      "none"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is 'low'.",
+    "difficulty": "medium",
+    "code": "x = 1\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-058",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "odd",
+      "(no output)",
+      "even",
+      "both"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is 'even'.",
+    "difficulty": "medium",
+    "code": "x = 2\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-059",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is 'C'.",
+    "difficulty": "medium",
+    "code": "marks = 20\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-060",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "high",
+      "mid",
+      "none",
+      "low"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'low'.",
+    "difficulty": "medium",
+    "code": "x = 2\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-061",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "even",
+      "odd",
+      "both",
+      "(no output)"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'odd'.",
+    "difficulty": "medium",
+    "code": "x = 3\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-062",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "C",
+      "B",
+      "A",
+      "D"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is 'C'.",
+    "difficulty": "medium",
+    "code": "marks = 30\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-063",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "high",
+      "low",
+      "none",
+      "mid"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'low'.",
+    "difficulty": "medium",
+    "code": "x = 3\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-064",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "(no output)",
+      "odd",
+      "both",
+      "even"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'even'.",
+    "difficulty": "medium",
+    "code": "x = 4\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-065",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "D",
+      "A",
+      "B",
+      "C"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is 'B'.",
+    "difficulty": "medium",
+    "code": "marks = 40\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-066",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "low",
+      "high",
+      "mid",
+      "none"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is 'mid'.",
+    "difficulty": "medium",
+    "code": "x = 4\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-067",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "(no output)",
+      "even",
+      "both",
+      "odd"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'odd'.",
+    "difficulty": "medium",
+    "code": "x = 5\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-068",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "D",
+      "B",
+      "C",
+      "A"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'B'.",
+    "difficulty": "medium",
+    "code": "marks = 50\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-069",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "high",
+      "mid",
+      "none",
+      "low"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'mid'.",
+    "difficulty": "medium",
+    "code": "x = 5\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-070",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "both",
+      "even",
+      "(no output)",
+      "odd"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'even'.",
+    "difficulty": "medium",
+    "code": "x = 6\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-071",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "D",
+      "A",
+      "C",
+      "B"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'B'.",
+    "difficulty": "medium",
+    "code": "marks = 60\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-072",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "high",
+      "low",
+      "mid",
+      "none"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is 'mid'.",
+    "difficulty": "medium",
+    "code": "x = 6\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-073",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "(no output)",
+      "odd",
+      "even",
+      "both"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is 'odd'.",
+    "difficulty": "medium",
+    "code": "x = 7\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-074",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "B",
+      "C",
+      "D",
+      "A"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'A'.",
+    "difficulty": "medium",
+    "code": "marks = 70\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-075",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "none",
+      "mid",
+      "low",
+      "high"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'high'.",
+    "difficulty": "medium",
+    "code": "x = 7\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-076",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "odd",
+      "(no output)",
+      "both",
+      "even"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is 'even'.",
+    "difficulty": "medium",
+    "code": "x = 8\nif x % 2 == 0:\n    print(\"even\")\nelse:\n    print(\"odd\")"
+  },
+  {
+    "id": "py-077",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "A",
+      "D",
+      "C",
+      "B"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is 'A'.",
+    "difficulty": "medium",
+    "code": "marks = 80\nif marks >= 70:\n    print(\"A\")\nelif marks >= 40:\n    print(\"B\")\nelse:\n    print(\"C\")"
+  },
+  {
+    "id": "py-078",
+    "topic": "Conditions",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "high",
+      "low",
+      "none",
+      "mid"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is 'high'.",
+    "difficulty": "medium",
+    "code": "x = 8\nif x > 3:\n    if x > 6:\n        print(\"high\")\n    else:\n        print(\"mid\")\nelse:\n    print(\"low\")"
+  },
+  {
+    "id": "py-079",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "[0, 1, 2]",
+      "[0, 1, 2, 3]",
+      "[1, 2]"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(3)))"
+  },
+  {
+    "id": "py-080",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1]",
+      "[1, 2]",
+      "[1, 3]",
+      "[0, 2]"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 3, 2)))"
+  },
+  {
+    "id": "py-081",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "6",
+      "4",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(3):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-082",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3]",
+      "[0, 1, 2, 3, 4]",
+      "4",
+      "[0, 1, 2, 3]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(4)))"
+  },
+  {
+    "id": "py-083",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3]",
+      "0",
+      "[0, 2]",
+      "[1, 3]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 4, 2)))"
+  },
+  {
+    "id": "py-084",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "6",
+      "4",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(4):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-085",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4]",
+      "[0, 1, 2, 3, 4, 5]",
+      "5",
+      "[0, 1, 2, 3, 4]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(5)))"
+  },
+  {
+    "id": "py-086",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4]",
+      "[0, 2, 4]",
+      "[1, 3]",
+      "[1, 3, 5]"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 5, 2)))"
+  },
+  {
+    "id": "py-087",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "15",
+      "11",
+      "10",
+      "5"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '10'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(5):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-088",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 1, 2, 3, 4, 5]",
+      "[1, 2, 3, 4, 5]",
+      "6",
+      "[0, 1, 2, 3, 4, 5, 6]"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(6)))"
+  },
+  {
+    "id": "py-089",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "[1, 3, 5]",
+      "[1, 2, 3, 4, 5]",
+      "[0, 2, 4]"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 6, 2)))"
+  },
+  {
+    "id": "py-090",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "6",
+      "21",
+      "15",
+      "16"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '15'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(6):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-091",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4, 5, 6]",
+      "[0, 1, 2, 3, 4, 5, 6, 7]",
+      "[0, 1, 2, 3, 4, 5, 6]",
+      "7"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5, 6]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(7)))"
+  },
+  {
+    "id": "py-092",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4, 5, 6]",
+      "[1, 3, 5, 7]",
+      "[0, 2, 4, 6]",
+      "[1, 3, 5]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 7, 2)))"
+  },
+  {
+    "id": "py-093",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "21",
+      "22",
+      "28",
+      "7"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '21'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(7):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-094",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4, 5, 6, 7]",
+      "[0, 1, 2, 3, 4, 5, 6, 7]",
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8]",
+      "8"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5, 6, 7]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(8)))"
+  },
+  {
+    "id": "py-095",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 2, 3, 4, 5, 6, 7]",
+      "[0, 2, 4, 6]",
+      "0",
+      "[1, 3, 5, 7]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5, 7]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 8, 2)))"
+  },
+  {
+    "id": "py-096",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "36",
+      "29",
+      "28",
+      "8"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '28'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(8):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-097",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]",
+      "9",
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8]",
+      "[1, 2, 3, 4, 5, 6, 7, 8]"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5, 6, 7, 8]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(9)))"
+  },
+  {
+    "id": "py-098",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 2, 4, 6, 8]",
+      "[1, 3, 5, 7]",
+      "[1, 2, 3, 4, 5, 6, 7, 8]",
+      "[1, 3, 5, 7, 9]"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5, 7]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 9, 2)))"
+  },
+  {
+    "id": "py-099",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "37",
+      "36",
+      "45",
+      "9"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '36'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(9):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-100",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "10",
+      "[1, 2, 3, 4, 5, 6, 7, 8, 9]",
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(10)))"
+  },
+  {
+    "id": "py-101",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 2, 4, 6, 8]",
+      "0",
+      "[1, 2, 3, 4, 5, 6, 7, 8, 9]",
+      "[1, 3, 5, 7, 9]"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5, 7, 9]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 10, 2)))"
+  },
+  {
+    "id": "py-102",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "55",
+      "10",
+      "46",
+      "45"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '45'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(10):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-103",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+      "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "11"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(11)))"
+  },
+  {
+    "id": "py-104",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 2, 4, 6, 8, 10]",
+      "[1, 3, 5, 7, 9]",
+      "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]",
+      "[1, 3, 5, 7, 9, 11]"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5, 7, 9]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 11, 2)))"
+  },
+  {
+    "id": "py-105",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "11",
+      "55",
+      "56",
+      "66"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '55'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(11):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-106",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+      "[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]",
+      "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]",
+      "12"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(12)))"
+  },
+  {
+    "id": "py-107",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "[1, 3, 5, 7, 9, 11]",
+      "0",
+      "[0, 2, 4, 6, 8, 10]",
+      "[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '[1, 3, 5, 7, 9, 11]'.",
+    "difficulty": "medium",
+    "code": "print(list(range(1, 12, 2)))"
+  },
+  {
+    "id": "py-108",
+    "topic": "For loops & range",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "67",
+      "66",
+      "78"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '66'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor i in range(12):\n    total += i\nprint(total)"
+  },
+  {
+    "id": "py-109",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "3",
+      "-1",
+      "1"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '-1'.",
+    "difficulty": "medium",
+    "code": "x = 3\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-110",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "2",
+      "4",
+      "5"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '4'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 3:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-111",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "4",
+      "0",
+      "2",
+      "1"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 4\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-112",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "6",
+      "0",
+      "3",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '4'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 4:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-113",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "5",
+      "-1",
+      "1"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '-1'.",
+    "difficulty": "medium",
+    "code": "x = 5\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-114",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "6",
+      "4",
+      "5"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 5:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-115",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "0",
+      "4",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 6\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-116",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "5",
+      "8",
+      "6"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 6:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-117",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "5",
+      "1",
+      "-1",
+      "7"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '-1'.",
+    "difficulty": "medium",
+    "code": "x = 7\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-118",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "8",
+      "9",
+      "6",
+      "7"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '8'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 7:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-119",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "1",
+      "6",
+      "8"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 8\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-120",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "8",
+      "10",
+      "0"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '8'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 8:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-121",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "7",
+      "1",
+      "-1"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '-1'.",
+    "difficulty": "medium",
+    "code": "x = 9\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-122",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "8",
+      "11",
+      "10"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '10'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 9:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-123",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "10",
+      "0",
+      "8"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 10\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-124",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "12",
+      "0",
+      "10"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '10'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 10:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-125",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "1",
+      "-1",
+      "11"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '-1'.",
+    "difficulty": "medium",
+    "code": "x = 11\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-126",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "11",
+      "12",
+      "10",
+      "13"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '12'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 11:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-127",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "0",
+      "1",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '0'.",
+    "difficulty": "medium",
+    "code": "x = 12\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-128",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "11",
+      "12",
+      "0",
+      "14"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '12'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 12:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-129",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1",
+      "11",
+      "13",
+      "-1"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '-1'.",
+    "difficulty": "medium",
+    "code": "x = 13\nwhile x > 0:\n    x -= 2\nprint(x)"
+  },
+  {
+    "id": "py-130",
+    "topic": "While loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "14",
+      "13",
+      "15"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '14'.",
+    "difficulty": "medium",
+    "code": "x = 0\nwhile x < 13:\n    x += 2\nprint(x)"
+  },
+  {
+    "id": "py-131",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2",
+      "5",
+      "6",
+      "4"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(2):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-132",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1 2",
+      "1 1",
+      "2 2",
+      "0 1"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 1'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(2):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-133",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "6",
+      "3",
+      "9"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '9'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(3):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-134",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2 3",
+      "0 2",
+      "1 2",
+      "1 3"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 2'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(3):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-135",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "4",
+      "7",
+      "12",
+      "8"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '12'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(4):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-136",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1 3",
+      "0 3",
+      "1 4",
+      "2 4"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 3'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(4):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-137",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "8",
+      "15",
+      "10",
+      "5"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '15'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(5):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-138",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2 5",
+      "1 5",
+      "0 4",
+      "1 4"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 4'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(5):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-139",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "6",
+      "9",
+      "18"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '18'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(6):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-140",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2 6",
+      "1 6",
+      "1 5",
+      "0 5"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 5'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(6):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-141",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "21",
+      "10",
+      "14"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '21'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(7):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-142",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2 7",
+      "0 6",
+      "1 6",
+      "1 7"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 6'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(7):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-143",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "8",
+      "16",
+      "11",
+      "24"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '24'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(8):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-144",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0 7",
+      "1 8",
+      "1 7",
+      "2 8"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 7'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(8):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-145",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "18",
+      "27",
+      "9",
+      "12"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '27'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(9):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-146",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1 8",
+      "0 8",
+      "1 9",
+      "2 9"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 8'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(9):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-147",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "13",
+      "30",
+      "20",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '30'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(10):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-148",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "2 10",
+      "0 9",
+      "1 9",
+      "1 10"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 9'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(10):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-149",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "22",
+      "14",
+      "33",
+      "11"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '33'.",
+    "difficulty": "medium",
+    "code": "count = 0\nfor i in range(11):\n    for j in range(3):\n        count += 1\nprint(count)"
+  },
+  {
+    "id": "py-150",
+    "topic": "Nested loops",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "1 11",
+      "0 10",
+      "1 10",
+      "2 11"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '1 10'.",
+    "difficulty": "medium",
+    "code": "for i in range(2):\n    for j in range(11):\n        pass\nprint(i, j)"
+  },
+  {
+    "id": "py-151",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "5",
+      "10",
+      "8",
+      "7"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '10'.",
+    "difficulty": "medium",
+    "code": "x = 2\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-152",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "None",
+      "1",
+      "2",
+      "3"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "a = 2\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-153",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "6",
+      "9",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '12'.",
+    "difficulty": "medium",
+    "code": "x = 3\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-154",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "None",
+      "2",
+      "4",
+      "3"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "a = 3\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-155",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "14",
+      "10",
+      "11",
+      "7"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '14'.",
+    "difficulty": "medium",
+    "code": "x = 4\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-156",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "5",
+      "None",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '4'.",
+    "difficulty": "medium",
+    "code": "a = 4\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-157",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "16",
+      "8",
+      "13",
+      "11"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '16'.",
+    "difficulty": "medium",
+    "code": "x = 5\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-158",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "4",
+      "6",
+      "None",
+      "5"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '5'.",
+    "difficulty": "medium",
+    "code": "a = 5\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-159",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "18",
+      "12",
+      "9",
+      "15"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '18'.",
+    "difficulty": "medium",
+    "code": "x = 6\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-160",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "6",
+      "5",
+      "None"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "a = 6\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-161",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "13",
+      "20",
+      "17",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '20'.",
+    "difficulty": "medium",
+    "code": "x = 7\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-162",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "None",
+      "8",
+      "7",
+      "6"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '7'.",
+    "difficulty": "medium",
+    "code": "a = 7\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-163",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "14",
+      "11",
+      "19",
+      "22"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '22'.",
+    "difficulty": "medium",
+    "code": "x = 8\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-164",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "None",
+      "8",
+      "9",
+      "7"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '8'.",
+    "difficulty": "medium",
+    "code": "a = 8\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-165",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "24",
+      "15",
+      "12",
+      "21"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '24'.",
+    "difficulty": "medium",
+    "code": "x = 9\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-166",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "None",
+      "10",
+      "8",
+      "9"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '9'.",
+    "difficulty": "medium",
+    "code": "a = 9\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-167",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "26",
+      "16",
+      "13",
+      "23"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '26'.",
+    "difficulty": "medium",
+    "code": "x = 10\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-168",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "10",
+      "None",
+      "11",
+      "9"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '10'.",
+    "difficulty": "medium",
+    "code": "a = 10\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-169",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "25",
+      "14",
+      "28",
+      "17"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '28'.",
+    "difficulty": "medium",
+    "code": "x = 11\nx += 3\nx *= 2\nprint(x)"
+  },
+  {
+    "id": "py-170",
+    "topic": "Output tracing",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "11",
+      "10",
+      "None"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '11'.",
+    "difficulty": "medium",
+    "code": "a = 11\nb = a\na = a + 1\nprint(b)"
+  },
+  {
+    "id": "py-171",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "5",
+      "3",
+      "10",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(5):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-172",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "2",
+      "5",
+      "4"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '2'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(5):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-173",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "15",
+      "6",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(6):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-174",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "5",
+      "6",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(6):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-175",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "7",
+      "6",
+      "21"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(7):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-176",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "3",
+      "6",
+      "7"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(7):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-177",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "28",
+      "8",
+      "6"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(8):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-178",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "8",
+      "0",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '4'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(8):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-179",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "6",
+      "3",
+      "36"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(9):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-180",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "8",
+      "0",
+      "4"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '4'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(9):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-181",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "45",
+      "3",
+      "6",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(10):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-182",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "9",
+      "5",
+      "10",
+      "0"
+    ],
+    "correct": 1,
+    "explanation": "Python executes the statements in order. The exact printed output is '5'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(10):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-183",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "6",
+      "55",
+      "11"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(11):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-184",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "0",
+      "10",
+      "5",
+      "11"
+    ],
+    "correct": 2,
+    "explanation": "Python executes the statements in order. The exact printed output is '5'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(11):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-185",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "6",
+      "12",
+      "66",
+      "3"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(12):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-186",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "6",
+      "0",
+      "11",
+      "12"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(12):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-187",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "78",
+      "13",
+      "6",
+      "3"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(13):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-188",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "12",
+      "0",
+      "13",
+      "6"
+    ],
+    "correct": 3,
+    "explanation": "Python executes the statements in order. The exact printed output is '6'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(13):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-189",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "3",
+      "91",
+      "6",
+      "14"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '3'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(14):\n    if x == 3:\n        break\n    total += x\nprint(total)"
+  },
+  {
+    "id": "py-190",
+    "topic": "Break, continue & pass",
+    "prompt": "What is printed by this code?",
+    "options": [
+      "7",
+      "14",
+      "13",
+      "0"
+    ],
+    "correct": 0,
+    "explanation": "Python executes the statements in order. The exact printed output is '7'.",
+    "difficulty": "medium",
+    "code": "total = 0\nfor x in range(14):\n    if x % 2 == 0:\n        continue\n    total += 1\nprint(total)"
+  },
+  {
+    "id": "py-191",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "ZeroDivisionError",
+      "NameError",
+      "SyntaxError",
+      "TypeError"
+    ],
+    "correct": 1,
+    "explanation": "`unknown_name` has not been defined.",
+    "difficulty": "medium",
+    "code": "print(unknown_name)"
+  },
+  {
+    "id": "py-192",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "IndexError",
+      "NameError",
+      "IndentationError",
+      "SyntaxError"
+    ],
+    "correct": 1,
+    "explanation": "`unknown_name` has not been defined.",
+    "difficulty": "medium",
+    "code": "print(unknown_name)"
+  },
+  {
+    "id": "py-193",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "SyntaxError",
+      "TypeError",
+      "ValueError",
+      "ZeroDivisionError"
+    ],
+    "correct": 3,
+    "explanation": "Division by zero raises ZeroDivisionError.",
+    "difficulty": "medium",
+    "code": "print(1 / 0)"
+  },
+  {
+    "id": "py-194",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "ZeroDivisionError",
+      "IndexError",
+      "NameError",
+      "SyntaxError"
+    ],
+    "correct": 0,
+    "explanation": "Division by zero raises ZeroDivisionError.",
+    "difficulty": "medium",
+    "code": "print(1 / 0)"
+  },
+  {
+    "id": "py-195",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "ZeroDivisionError",
+      "ValueError",
+      "NameError",
+      "IndexError"
+    ],
+    "correct": 1,
+    "explanation": "The string cannot be converted to an integer.",
+    "difficulty": "medium",
+    "code": "print(int(\"hello\"))"
+  },
+  {
+    "id": "py-196",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "SyntaxError",
+      "IndentationError",
+      "ValueError",
+      "ZeroDivisionError"
+    ],
+    "correct": 2,
+    "explanation": "The string cannot be converted to an integer.",
+    "difficulty": "medium",
+    "code": "print(int(\"hello\"))"
+  },
+  {
+    "id": "py-197",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "NameError",
+      "IndexError",
+      "IndentationError",
+      "ValueError"
+    ],
+    "correct": 1,
+    "explanation": "Index 5 is outside the list.",
+    "difficulty": "medium",
+    "code": "print([1, 2][5])"
+  },
+  {
+    "id": "py-198",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "NameError",
+      "IndentationError",
+      "ZeroDivisionError",
+      "IndexError"
+    ],
+    "correct": 3,
+    "explanation": "Index 5 is outside the list.",
+    "difficulty": "medium",
+    "code": "print([1, 2][5])"
+  },
+  {
+    "id": "py-199",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "IndexError",
+      "ZeroDivisionError",
+      "SyntaxError",
+      "TypeError"
+    ],
+    "correct": 2,
+    "explanation": "The if statement requires a colon and a valid suite.",
+    "difficulty": "medium",
+    "code": "if True print(1)"
+  },
+  {
+    "id": "py-200",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "IndexError",
+      "NameError",
+      "IndentationError",
+      "SyntaxError"
+    ],
+    "correct": 3,
+    "explanation": "The if statement requires a colon and a valid suite.",
+    "difficulty": "medium",
+    "code": "if True print(1)"
+  },
+  {
+    "id": "py-201",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "NameError",
+      "ValueError",
+      "no error",
+      "IndentationError"
+    ],
+    "correct": 3,
+    "explanation": "The block after an if statement must be indented.",
+    "difficulty": "medium",
+    "code": "if True:\nprint(1)"
+  },
+  {
+    "id": "py-202",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "ValueError",
+      "IndentationError",
+      "TypeError",
+      "ZeroDivisionError"
+    ],
+    "correct": 1,
+    "explanation": "The block after an if statement must be indented.",
+    "difficulty": "medium",
+    "code": "if True:\nprint(1)"
+  },
+  {
+    "id": "py-203",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "IndentationError",
+      "no error",
+      "ZeroDivisionError",
+      "SyntaxError"
+    ],
+    "correct": 3,
+    "explanation": "A closing parenthesis is missing.",
+    "difficulty": "medium",
+    "code": "print(\"hello\""
+  },
+  {
+    "id": "py-204",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "ZeroDivisionError",
+      "SyntaxError",
+      "NameError",
+      "ValueError"
+    ],
+    "correct": 1,
+    "explanation": "A closing parenthesis is missing.",
+    "difficulty": "medium",
+    "code": "print(\"hello\""
+  },
+  {
+    "id": "py-205",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "ValueError",
+      "NameError",
+      "ZeroDivisionError",
+      "TypeError"
+    ],
+    "correct": 3,
+    "explanation": "Python cannot add int and str directly.",
+    "difficulty": "medium",
+    "code": "x = 4\nprint(x + \"2\")"
+  },
+  {
+    "id": "py-206",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "SyntaxError",
+      "IndentationError",
+      "ZeroDivisionError",
+      "TypeError"
+    ],
+    "correct": 3,
+    "explanation": "Python cannot add int and str directly.",
+    "difficulty": "medium",
+    "code": "x = 4\nprint(x + \"2\")"
+  },
+  {
+    "id": "py-207",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "ZeroDivisionError",
+      "IndentationError",
+      "no error",
+      "ValueError"
+    ],
+    "correct": 2,
+    "explanation": "After the loop, x retains its final value.",
+    "difficulty": "medium",
+    "code": "for x in range(2):\n    pass\nprint(x)"
+  },
+  {
+    "id": "py-208",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "SyntaxError",
+      "IndentationError",
+      "no error",
+      "NameError"
+    ],
+    "correct": 2,
+    "explanation": "After the loop, x retains its final value.",
+    "difficulty": "medium",
+    "code": "for x in range(2):\n    pass\nprint(x)"
+  },
+  {
+    "id": "py-209",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs?",
+    "options": [
+      "no error",
+      "IndentationError",
+      "SyntaxError",
+      "IndexError"
+    ],
+    "correct": 2,
+    "explanation": "Assignment = cannot be used as an if condition.",
+    "difficulty": "medium",
+    "code": "x = 5\nif x = 5:\n    print(x)"
+  },
+  {
+    "id": "py-210",
+    "topic": "Errors & exceptions",
+    "prompt": "What happens when this snippet runs? Choose the most specific answer.",
+    "options": [
+      "SyntaxError",
+      "IndentationError",
+      "ZeroDivisionError",
+      "IndexError"
+    ],
+    "correct": 0,
+    "explanation": "Assignment = cannot be used as an if condition.",
+    "difficulty": "medium",
+    "code": "x = 5\nif x = 5:\n    print(x)"
+  },
+  {
+    "id": "py-211",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 2 inclusive. Which range is correct?",
+    "options": [
+      "range(2)",
+      "range(3)",
+      "range(1, 2)",
+      "range(4)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(3) includes 2.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-212",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 2. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 2",
+      "counter > 2",
+      "counter == 2",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-213",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 3 inclusive. Which range is correct?",
+    "options": [
+      "range(3)",
+      "range(4)",
+      "range(1, 3)",
+      "range(5)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(4) includes 3.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-214",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 3. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 3",
+      "counter > 3",
+      "counter == 3",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-215",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 4 inclusive. Which range is correct?",
+    "options": [
+      "range(4)",
+      "range(5)",
+      "range(1, 4)",
+      "range(6)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(5) includes 4.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-216",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 4. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 4",
+      "counter > 4",
+      "counter == 4",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-217",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 5 inclusive. Which range is correct?",
+    "options": [
+      "range(5)",
+      "range(6)",
+      "range(1, 5)",
+      "range(7)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(6) includes 5.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-218",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 5. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 5",
+      "counter > 5",
+      "counter == 5",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-219",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 6 inclusive. Which range is correct?",
+    "options": [
+      "range(6)",
+      "range(7)",
+      "range(1, 6)",
+      "range(8)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(7) includes 6.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-220",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 6. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 6",
+      "counter > 6",
+      "counter == 6",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-221",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 7 inclusive. Which range is correct?",
+    "options": [
+      "range(7)",
+      "range(8)",
+      "range(1, 7)",
+      "range(9)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(8) includes 7.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-222",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 7. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 7",
+      "counter > 7",
+      "counter == 7",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-223",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 8 inclusive. Which range is correct?",
+    "options": [
+      "range(8)",
+      "range(9)",
+      "range(1, 8)",
+      "range(10)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(9) includes 8.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-224",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 8. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 8",
+      "counter > 8",
+      "counter == 8",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-225",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 9 inclusive. Which range is correct?",
+    "options": [
+      "range(9)",
+      "range(10)",
+      "range(1, 9)",
+      "range(11)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(10) includes 9.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-226",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 9. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 9",
+      "counter > 9",
+      "counter == 9",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-227",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 10 inclusive. Which range is correct?",
+    "options": [
+      "range(10)",
+      "range(11)",
+      "range(1, 10)",
+      "range(12)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(11) includes 10.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-228",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 10. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 10",
+      "counter > 10",
+      "counter == 10",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-229",
+    "topic": "Debugging",
+    "prompt": "You want to print numbers 0 through 11 inclusive. Which range is correct?",
+    "options": [
+      "range(11)",
+      "range(12)",
+      "range(1, 11)",
+      "range(13)"
+    ],
+    "correct": 1,
+    "explanation": "The stop of range is excluded, so range(12) includes 11.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-230",
+    "topic": "Debugging",
+    "prompt": "A counter starts at 0 and must stop when it reaches 11. Which condition runs while it is still below the target?",
+    "options": [
+      "counter < 11",
+      "counter > 11",
+      "counter == 11",
+      "counter != 0"
+    ],
+    "correct": 0,
+    "explanation": "Use < to repeat only while counter has not reached the target.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-231",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(2, 2):` execute?",
+    "options": [
+      "0",
+      "1",
+      "2",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-232",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 4, 2)`?",
+    "options": [
+      "4",
+      "2",
+      "3",
+      "6"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-233",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(3, 3):` execute?",
+    "options": [
+      "0",
+      "1",
+      "3",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-234",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 6, 2)`?",
+    "options": [
+      "6",
+      "4",
+      "5",
+      "8"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-235",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(4, 4):` execute?",
+    "options": [
+      "0",
+      "1",
+      "4",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-236",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 8, 2)`?",
+    "options": [
+      "8",
+      "6",
+      "7",
+      "10"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-237",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(5, 5):` execute?",
+    "options": [
+      "0",
+      "1",
+      "5",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-238",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 10, 2)`?",
+    "options": [
+      "10",
+      "8",
+      "9",
+      "12"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-239",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(6, 6):` execute?",
+    "options": [
+      "0",
+      "1",
+      "6",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-240",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 12, 2)`?",
+    "options": [
+      "12",
+      "10",
+      "11",
+      "14"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-241",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(7, 7):` execute?",
+    "options": [
+      "0",
+      "1",
+      "7",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-242",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 14, 2)`?",
+    "options": [
+      "14",
+      "12",
+      "13",
+      "16"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-243",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(8, 8):` execute?",
+    "options": [
+      "0",
+      "1",
+      "8",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-244",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 16, 2)`?",
+    "options": [
+      "16",
+      "14",
+      "15",
+      "18"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-245",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(9, 9):` execute?",
+    "options": [
+      "0",
+      "1",
+      "9",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-246",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 18, 2)`?",
+    "options": [
+      "18",
+      "16",
+      "17",
+      "20"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-247",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(10, 10):` execute?",
+    "options": [
+      "0",
+      "1",
+      "10",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-248",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 20, 2)`?",
+    "options": [
+      "20",
+      "18",
+      "19",
+      "22"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-249",
+    "topic": "Boundary cases",
+    "prompt": "How many times does `for i in range(11, 11):` execute?",
+    "options": [
+      "0",
+      "1",
+      "11",
+      "infinite"
+    ],
+    "correct": 0,
+    "explanation": "An empty range has no elements because start equals stop.",
+    "difficulty": "easy"
+  },
+  {
+    "id": "py-250",
+    "topic": "Boundary cases",
+    "prompt": "What is the last number in `range(0, 22, 2)`?",
+    "options": [
+      "22",
+      "20",
+      "21",
+      "24"
+    ],
+    "correct": 1,
+    "explanation": "The stop is excluded, so the last even number is two less than the stop.",
+    "difficulty": "easy"
+  }
+]

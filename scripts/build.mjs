@@ -1,0 +1,1 @@
+import {mkdir,cp} from 'node:fs/promises';await mkdir('dist',{recursive:true});for(const name of ['index.html','src','data'])await cp(name,`dist/${name}`,{recursive:true});console.log('Built dist/ for static hosting');
