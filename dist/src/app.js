@@ -13,6 +13,7 @@ let currentTopic = 'all';
 let currentDifficulty = 'all';
 let nickname = read('nickname', '');
 let ticker = null;
+let navigationEvents = new AbortController();
 let latestResult = null;
 
 const TOPIC_PRACTICE_MAP = {
@@ -199,9 +200,14 @@ function attachIntroEvents() {
 }
 
 function shell(body, active = 'dashboard', { showIntro = false } = {}) {
+  navigationEvents.abort();
+  navigationEvents = new AbortController();
+  document.body.classList.remove('nav-open');
   app.innerHTML = `
     <div class="layout">
-      <aside class="sidebar">
+      <div class="sidebar-backdrop" id="sidebar-backdrop" aria-hidden="true"></div>
+      <aside class="sidebar" id="app-sidebar" aria-label="Main navigation">
+        <div class="mobile-sidebar-head"><span>EXPLORE ARENA</span><button type="button" id="close-sidebar" class="sidebar-icon-btn" aria-label="Close navigation">✕</button></div>
         <a class="brand" href="#dashboard">
           <span class="brand-icon">⌘</span>
           <span>CE2<span class="brand-muted"> / PYTHON</span><small>THE PRACTICE ARENA</small></span>
@@ -223,6 +229,7 @@ function shell(body, active = 'dashboard', { showIntro = false } = {}) {
       </aside>
       <main class="main">
         <header class="topbar">
+          <button type="button" id="open-sidebar" class="sidebar-icon-btn menu-toggle" aria-label="Open navigation" aria-controls="app-sidebar" aria-expanded="false"><span class="menu-lines"><i></i><i></i><i></i></span></button>
           <div class="crumb">ARENA <span>/</span> ${esc(active.toUpperCase())}</div>
           <div class="top-right">
             <span class="local-pill">◉ LOCAL MODE</span>
@@ -234,7 +241,48 @@ function shell(body, active = 'dashboard', { showIntro = false } = {}) {
     </div>
     ${showIntro ? introMarkup() : ''}
   `;
+  attachSidebarEvents();
   if (showIntro) attachIntroEvents();
+}
+
+function attachSidebarEvents() {
+  const sidebar = document.querySelector('#app-sidebar');
+  const backdrop = document.querySelector('#sidebar-backdrop');
+  const opener = document.querySelector('#open-sidebar');
+  const closer = document.querySelector('#close-sidebar');
+  let lastFocus = null;
+  const setOpen = (open) => {
+    const visible = open && window.matchMedia('(max-width: 960px)').matches;
+    sidebar.classList.toggle('is-open', visible);
+    backdrop.classList.toggle('is-open', visible);
+    document.body.classList.toggle('nav-open', visible);
+    opener.setAttribute('aria-expanded', String(visible));
+    sidebar.inert = !visible && window.matchMedia('(max-width: 960px)').matches;
+    if (visible) { lastFocus = document.activeElement; closer.focus(); }
+    else if (open === false && lastFocus && lastFocus.isConnected) { lastFocus.focus(); lastFocus = null; }
+  };
+  opener.addEventListener('click', () => setOpen(true));
+  closer.addEventListener('click', () => setOpen(false));
+  backdrop.addEventListener('click', () => setOpen(false));
+  sidebar.querySelectorAll('nav a, .brand').forEach((link) => link.addEventListener('click', () => setOpen(false)));
+  const onKeydown = (event) => {
+    if (!sidebar.classList.contains('is-open')) return;
+    if (event.key === 'Escape') { event.preventDefault(); setOpen(false); }
+    if (event.key === 'Tab') {
+      const items = [...sidebar.querySelectorAll('button:not([disabled]), a[href]')];
+      const first = items[0], last = items.at(-1);
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+      else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+    }
+  };
+  document.addEventListener('keydown', onKeydown, { signal: navigationEvents.signal });
+  const query = window.matchMedia('(max-width: 960px)');
+  const onResize = () => {
+    if (!query.matches) { sidebar.classList.remove('is-open'); backdrop.classList.remove('is-open'); document.body.classList.remove('nav-open'); sidebar.inert = false; opener.setAttribute('aria-expanded', 'false'); }
+    else sidebar.inert = !sidebar.classList.contains('is-open');
+  };
+  query.addEventListener('change', onResize, { signal: navigationEvents.signal });
+  onResize();
 }
 
 function introMarkup() {

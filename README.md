@@ -60,3 +60,22 @@ For updates, replace files with the same relative paths and commit.
 - Full physical-device (iPhone) and browser end-to-end QA was not completed in this environment.
 - The leaderboard exists only in localStorage; clearing browser data deletes local results. There is no cross-device or anti-cheat synchronization.
 - Questions are revision material, not sourced from an official CE2 examination.
+
+## V4 mobile navigation and responsive refinements
+
+- The former bottom navigation has been replaced with an off-canvas sidebar on viewports up to 960px wide.
+- Tap the menu icon at the top left to open it. Use the close icon, backdrop, navigation link, or Escape key to close it. Focus is moved into the drawer and constrained inside it while open.
+- The original persistent sidebar remains on larger screens.
+- Dashboard cards, quizzes, question navigator, review, lessons, local leaderboard, and welcome intro have narrower mobile layouts, with extra adjustments for 370px phones, landscape, and reduced motion.
+- Data storage keys and GitHub Pages paths are unchanged; existing browser progress should remain intact.
+- A physical iPhone/Safari visual test has **not** been performed; use the checklist below before announcing full device coverage.
+
+### Manual responsive verification checklist
+
+1. On a narrow phone (320, 360, 375, 390px), open the drawer, tap links, close via backdrop and X, check no horizontal page scroll.
+2. On larger phones and tablets (430, 768, 820, 960px), check all cards and layouts remain within the viewport.
+3. At 1024px and desktop widths, check the permanent sidebar shows and no menu icon appears.
+4. Rotate a phone to landscape and ensure the sidebar scrolls, intro can be dismissed, and exam controls are accessible.
+5. Use a keyboard: Tab and Shift+Tab should stay inside an open drawer; Escape closes it.
+6. Start a practice and 60-question exam, check navigation buttons and timer, then refresh mid-exam.
+7. Verify the leaderboard remains explicitly local-only. No backend is included.
