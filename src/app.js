@@ -188,16 +188,34 @@ function shouldShowIntro() {
   }
 }
 
+let introTimer = null;
 function dismissIntro(remember = true) {
-  try {
-    if (remember) sessionStorage.setItem('ce2arena_intro_seen', '1');
-  } catch {}
-  document.querySelector('.intro-overlay')?.classList.add('hidden');
+  if (introTimer) { clearTimeout(introTimer); introTimer = null; }
+  try { if (remember) sessionStorage.setItem('ce2arena_intro_seen', '1'); } catch {}
+  const overlay = document.querySelector('.intro-overlay');
+  if (!overlay || overlay.classList.contains('hidden')) return;
+  overlay.classList.add('intro-exit');
+  setTimeout(() => overlay.remove(), 650);
 }
-
 function attachIntroEvents() {
+  const overlay = document.querySelector('.intro-overlay');
+  if (!overlay) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    introTimer = setTimeout(() => dismissIntro(true), 1500);
+  } else {
+    introTimer = setTimeout(() => dismissIntro(true), 6200);
+  }
   document.querySelector('#enter-arena')?.addEventListener('click', () => dismissIntro(true));
   document.querySelector('#skip-intro')?.addEventListener('click', () => dismissIntro(true));
+  overlay.addEventListener('keydown', e => { if(e.key==='Escape') dismissIntro(true); });
+}
+function enhanceMotion() {
+  if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const targets = document.querySelectorAll('.metrics, .mode-card, .panel, .note-card, .lesson-item, .trap-grid article, .question-card, .result-hero, .admin-metrics');
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) if(entry.isIntersecting) {entry.target.classList.add('in-view'); observer.unobserve(entry.target);}
+  }, {threshold: .09, rootMargin: '0px 0px 35px 0px'});
+  targets.forEach(target => {target.classList.add('motion-ready'); observer.observe(target);});
 }
 
 function shell(body, active = 'dashboard', { showIntro = false } = {}) {
@@ -245,6 +263,7 @@ function shell(body, active = 'dashboard', { showIntro = false } = {}) {
   `;
   attachSidebarEvents();
   if (showIntro) attachIntroEvents();
+  requestAnimationFrame(enhanceMotion);
 }
 
 function attachSidebarEvents() {
@@ -289,33 +308,31 @@ function attachSidebarEvents() {
 
 function introMarkup() {
   return `
-    <div class="intro-overlay">
+    <div class="intro-overlay" role="dialog" aria-modal="true" aria-label="Welcome to CE2 Python Practice Arena" tabindex="-1">
+      <div class="intro-progress"><span></span></div>
       <div class="intro-card">
         <div class="intro-copy">
-          <span class="overline">WELCOME / CE2 PYTHON PRACTICE ARENA</span>
-          <h1>Your next level<br/><em>starts here.</em></h1>
-          <p>Enter a space built for sharper thinking. Decode Python, challenge your instincts and walk into CE2 ready for anything.</p>
-          <div class="intro-actions">
-            <button class="btn primary" id="enter-arena">Enter arena ↗</button>
-            <button class="btn secondary" id="skip-intro">Skip intro</button>
-          </div>
-          <div class="intro-footer-meta"><span>01 / UNDERSTAND</span><span>02 / PRACTICE</span><span>03 / CONQUER</span></div>
+          <span class="overline">CE2 / THE PRACTICE ARENA</span>
+          <h1>Think in <em>code.</em><br>Win with <em>logic.</em></h1>
+          <p>379 challenges. One smarter way to prepare. Your exam-ready journey starts now.</p>
+          <div class="intro-actions"><button class="btn primary" id="enter-arena">Enter the arena <span>↗</span></button><button class="btn secondary" id="skip-intro">Skip intro</button></div>
+          <div class="intro-footer-meta"><span>01 / LEARN</span><span>02 / PRACTISE</span><span>03 / CONQUER</span></div>
         </div>
         <div class="intro-scene" aria-hidden="true">
-          <div class="scene-glow"></div><div class="scene-aurora"></div><div class="scene-grid"></div><div class="scene-star star-one"></div><div class="scene-star star-two"></div><div class="scene-star star-three"></div>
-          <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
-          <div class="intro-cube">
-            <div class="cube-face front">{ }</div>
-            <div class="cube-face back">if</div>
-            <div class="cube-face right">for</div>
-            <div class="cube-face left">[]</div>
-            <div class="cube-face top">Py</div>
-            <div class="cube-face bottom">CE2</div>
+          <div class="scene-glow"></div><div class="scene-aurora"></div>
+          <div class="scene-ring ring-a"></div><div class="scene-ring ring-b"></div>
+          <div class="model-stage">
+            <div class="intro-cube">
+              <div class="cube-face front"><span>{ }</span><small>PYTHON</small></div>
+              <div class="cube-face back"><span>CE2</span><small>ARENA</small></div>
+              <div class="cube-face right"><span>&lt;/&gt;</span><small>BUILD</small></div>
+              <div class="cube-face left"><span>if</span><small>LOGIC</small></div>
+              <div class="cube-face top"><span>Py</span></div>
+              <div class="cube-face bottom"><span>60</span></div>
+            </div>
           </div>
-          <div class="scene-chip chip-a"><span>◎</span> OUTPUT TRACING</div>
-          <div class="scene-chip chip-b"><span>↗</span> MOCK EXAM</div>
-          <div class="scene-chip chip-c"><span>◇</span> DEBUGGING</div>
+          <div class="scene-chip chip-a">TRACE THE OUTPUT</div>
+          <div class="scene-chip chip-b">DEBUG THE LOGIC</div>
         </div>
       </div>
     </div>
