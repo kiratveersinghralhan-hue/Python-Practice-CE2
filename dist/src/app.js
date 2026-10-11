@@ -293,18 +293,18 @@ function introMarkup() {
       <div class="intro-card">
         <div class="intro-copy">
           <span class="overline">WELCOME / CE2 PYTHON PRACTICE ARENA</span>
-          <h1>Practice smarter.<br/><em>Walk in confident.</em></h1>
-          <p>An exam-focused Python arena for first-sem students: faster revision, stronger fundamentals, trick-question training, and a smoother prep flow.</p>
+          <h1>Your next level<br/><em>starts here.</em></h1>
+          <p>Enter a space built for sharper thinking. Decode Python, challenge your instincts and walk into CE2 ready for anything.</p>
           <div class="intro-actions">
             <button class="btn primary" id="enter-arena">Enter arena ↗</button>
             <button class="btn secondary" id="skip-intro">Skip intro</button>
           </div>
-          <div class="hero-caption"><span class="sparkle">✦</span> 3D welcome scene · smooth motion · lightweight static site</div>
+          <div class="intro-footer-meta"><span>01 / UNDERSTAND</span><span>02 / PRACTICE</span><span>03 / CONQUER</span></div>
         </div>
         <div class="intro-scene" aria-hidden="true">
-          <div class="scene-glow"></div>
+          <div class="scene-glow"></div><div class="scene-aurora"></div><div class="scene-grid"></div><div class="scene-star star-one"></div><div class="scene-star star-two"></div><div class="scene-star star-three"></div>
           <div class="orbit orbit-one"></div>
-          <div class="orbit orbit-two"></div>
+          <div class="orbit orbit-two"></div><div class="orbit orbit-three"></div>
           <div class="intro-cube">
             <div class="cube-face front">{ }</div>
             <div class="cube-face back">if</div>
@@ -313,9 +313,9 @@ function introMarkup() {
             <div class="cube-face top">Py</div>
             <div class="cube-face bottom">CE2</div>
           </div>
-          <div class="scene-chip chip-a">OUTPUT TRACING</div>
-          <div class="scene-chip chip-b">MOCK EXAM</div>
-          <div class="scene-chip chip-c">DEBUGGING</div>
+          <div class="scene-chip chip-a"><span>◎</span> OUTPUT TRACING</div>
+          <div class="scene-chip chip-b"><span>↗</span> MOCK EXAM</div>
+          <div class="scene-chip chip-c"><span>◇</span> DEBUGGING</div>
         </div>
       </div>
     </div>
@@ -334,8 +334,8 @@ function dashboard() {
     <section class="hero">
       <div class="hero-copy">
         <span class="overline">FUNDAMENTAL PROGRAMMING • CE2</span>
-        <h1>Learn the logic.<br/><em>Own the exam.</em></h1>
-        <p>Practice Python the way first-sem university tests actually feel: short code, output tracing, debugging, algorithms, pseudocode, and common trap questions.</p>
+        <h1>Code with confidence.<br/><em>Think beyond limits.</em></h1>
+        <p>One arena. Every concept you need. Learn to spot traps, trace code and solve problems like a programmer — not just memorize answers.</p>
         <div class="action-row">
           <button class="btn primary" id="start-practice">Start practicing <span>↗</span></button>
           <button class="btn secondary" id="start-exam">Take mock exam <span>↗</span></button>
@@ -351,7 +351,7 @@ function dashboard() {
     <span class="purple">return</span> <span class="lime">"exam ready"</span>
 
 <span class="muted"># less panic, more pattern recognition.</span></pre>
-        <div class="floating-chip">✓ FIRST-SEM STYLE TRAINING</div>
+        <div class="floating-chip">✦ BUILT FOR YOUR NEXT BEST SCORE</div>
       </div>
     </section>
     <section class="metrics">

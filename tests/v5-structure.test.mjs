@@ -2,11 +2,12 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync, existsSync} from 'node:fs';
 const read = path => readFileSync(path, 'utf8');
-test('V5 has a local default with no configured Firebase project or exposed admin secret', () => {
+test('V6 preserves live Firebase client config without exposing privileged credentials', () => {
   const config = read('src/firebase-config.js');
   const cloud = read('src/cloud.js');
-  assert.match(config, /REPLACE_WITH_PROJECT_ID/);
-  assert.match(config, /REPLACE_WITH_YOUR_ADMIN_UID/);
+  assert.match(config, /ce2-python-practice-arena/);
+  assert.match(config, /ADMIN_UID/);
+  assert.match(config, /firebaseapp\.com/);
   assert.match(cloud, /if \(!configured\(\)\) return false/);
   assert.doesNotMatch(config, /private_key|serviceAccount|BEGIN PRIVATE KEY/);
 });
