@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Replace the UID below with the admin account's Authentication UID.
+    function admin() { return request.auth != null && request.auth.uid == 'REPLACE_WITH_YOUR_ADMIN_UID'; }
+    function signedIn() { return request.auth != null; }
+    function validName(n) { return n is string && n.size() >= 2 && n.size() <= 24 && n.matches('[A-Za-z0-9 _.\\-]+'); }
+    function scoreValid(d, uid) {
+      return d.keys().hasOnly(['uid', 'nickname', 'correct', 'marks', 'timeTaken', 'attempts'])
+        && d.keys().hasAll(['uid', 'nickname', 'correct', 'marks', 'timeTaken', 'attempts'])
+        && d.uid == uid && validName(d.nickname)
+        && d.correct is int && d.correct >= 0 && d.correct <= 60
+        && d.marks is number && d.marks == d.correct * 0.25
+        && d.timeTaken is int && d.timeTaken >= 0 && d.timeTaken <= 2700
+        && d.attempts is int && d.attempts >= 1;
+    }
+    match /scores/{uid} {
+      allow read: if true;
+      allow create: if signedIn() && request.auth.uid == uid && scoreValid(request.resource.data, uid) && request.resource.data.attempts == 1;
+      allow update: if signedIn() && request.auth.uid == uid && scoreValid(request.resource.data, uid)
+        && request.resource.data.attempts == resource.data.attempts + 1
+        && request.resource.data.correct >= resource.data.correct;
+      allow delete: if false;
+    }
+    match /attempts/{id} {
+      allow read: if admin() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow create: if signedIn()
+        && request.resource.data.keys().hasOnly(['uid', 'nickname', 'correct', 'incorrect', 'unanswered', 'marks', 'timeTaken', 'topics', 'createdAt'])
+        && request.resource.data.keys().hasAll(['uid', 'nickname', 'correct', 'incorrect', 'unanswered', 'marks', 'timeTaken', 'topics', 'createdAt'])
+        && request.resource.data.uid == request.auth.uid
+        && validName(request.resource.data.nickname)
+        && request.resource.data.correct is int && request.resource.data.correct >= 0
+        && request.resource.data.incorrect is int && request.resource.data.incorrect >= 0
+        && request.resource.data.unanswered is int && request.resource.data.unanswered >= 0
+        && request.resource.data.correct + request.resource.data.incorrect + request.resource.data.unanswered == 60
+        && request.resource.data.marks == request.resource.data.correct * 0.25
+        && request.resource.data.timeTaken is int && request.resource.data.timeTaken >= 0 && request.resource.data.timeTaken <= 2700
+        && request.resource.data.topics is map
+        && request.resource.data.createdAt == request.time;
+      allow update, delete: if false;
+    }
+    match /{document=**} { allow read, write: if false; }
+  }
+}

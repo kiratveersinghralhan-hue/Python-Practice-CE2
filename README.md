@@ -1,81 +1,49 @@
-# CE2 Python Practice Arena — V3
+# CE2 Python Practice Arena — V5
 
-A premium, mobile-first, fully static Python CE2 practice website.
+A premium static GitHub Pages Python practice website. Optional **Firebase Spark (free, no billing required)** provides a cross-device live leaderboard and owner-only admin analytics. **No Supabase, no paid APIs, no AI calls at runtime, no Blaze.**
 
-## What's included
+## Features
 
-- 379 MCQs covering core Python, tricky output questions, f-strings, `input()`, technical terms, mutability, algorithms, pseudocode and lab-style programs.
-- 60-question timed exams (45 minutes, 15 marks total), with a **fixed difficulty distribution of 18 easy + 30 medium + 12 hard**.
-- Unlimited topic-wise practice and exam retakes; options and questions shuffled independently each session.
-- Instant explanations in practice, full answer review after exams, mistake-review mode.
-- 12 concise Python Foundations lessons, an Exam Trap Lab, and quick-revision notes.
-- CSS-based animated 3D welcome cube (no external 3D library; reduced-motion compatible), refined button interactions.
-- Saves history, exam attempts, nickname and mistakes in local browser storage.
-- A **local-only leaderboard**; names and scores do not sync between devices. No Supabase, server, runtime AI or login.
+- 379 existing Python MCQs and answers, inspired by first-sem Programming Fundamentals lab topics. Practice questions are not official university exam questions.
+- 60 MCQs per mock exam, 45 minutes, marks out of 15, randomized answers/questions, automatic submission, explanatory review.
+- Balanced mock exam difficulty: 18 easy / 30 medium / 12 hard.
+- Unlimited practice, learning modules, mistakes review, trap lab and quick revision.
+- CSS-based 3D welcome intro with reduced-motion support, premium dark UI, mobile slide-in sidebar.
+- Local browser persistence for attempts and progress.
+- Optional Firebase live leaderboard (top 50 best scores), nickname entry, anonymous student login.
+- Authenticated admin page with private latest-200 attempts, marks, student and topic performance.
 
-### Reference material
-
-The V3 question categories and learning content were informed by the uploaded university lab bundle, including programs for even/odd, divisibility, grading, loops, digits, factorial, palindrome, prime, perfect and Armstrong numbers. Lab material informs the practice scope; these are **not official exam questions**.
-
-## Run locally
-
-Requires Python 3 and a modern browser.
+## Run / deploy
 
 ```bash
 python -m http.server 5173
+# open http://localhost:5173/
 ```
 
-Then open `http://localhost:5173/`. Don't double-click `index.html` from your filesystem because the browser blocks JSON loading in that context.
-
-Node.js is only needed for tests/build:
+Node.js is only used for optional tests and static build:
 
 ```bash
-npm test
+npm run check
 npm run build
 ```
 
-## GitHub Pages deployment — easiest
+For existing GitHub Pages: extract ZIP and upload all root files into the existing repository, preserving paths; **Settings → Pages → main branch → /(root)**. Do not upload ZIP itself. This project has relative URLs that work within a GitHub Pages repository subpath. The `.github/workflows/` workflow is optional; your branch deployment setting works without it.
 
-1. Extract the ZIP and upload the folder **contents** to the root of your existing GitHub repository, preserving `src/`, `data/`, `tests/`, `scripts/` and other paths.
-2. Go to **Settings → Pages**.
-3. Select **Deploy from a branch**, `main`, `/(root)`, then Save.
-4. Wait for Pages to finish; visit your existing repository Pages URL.
-5. `index.html` uses relative paths, so it works under a GitHub repository subpath.
+**Firebase setup:** See [`FIREBASE-SPARK-SETUP.md`](./FIREBASE-SPARK-SETUP.md). By default, `src/firebase-config.js` contains placeholders; the site works completely as a LOCAL/OFFLINE-READY quiz and shows the local leaderboard until you configure the Firebase project and publish database rules. **Actual offline use still requires the initial page/questions to be loaded or cached by the browser; it is not a service-worker-powered offline PWA.**
 
-For updates, replace files with the same relative paths and commit.
+## Architecture and security
 
-## How questions work
+- `src/app.js`: SPA routing, quizzes, score review, admin and leaderboard screens.
+- `src/engine.js`: question shuffling, exam selection, scoring, timers.
+- `src/storage.js`: local saved history, exam resume.
+- `src/cloud.js`: optional Firebase Auth and Firestore integration via official CDN modules; imported only if configured.
+- `src/firebase-config.js`: **public** client config + admin UID placeholder; no admin secret/password.
+- `firestore.rules`: restrictive rules that separate public best scores from per-exam data.
+- `data/questions.json`: separate question bank.
+- `tests/`: engine and static integration tests.
 
-- Questions live in `data/questions.json`, separate from UI components.
-- Each question has `id`, `topic`, `prompt`, four `options`, `correct` (zero-based index), `explanation`, `difficulty`, and optional `code`.
-- Engine lives in `src/engine.js`, UI in `src/app.js`, styling in `src/style.css`, persistence in `src/storage.js`.
-- `scripts/build.mjs` copies the static deployable files into `dist/`.
-- The exam uses 18 easy, 30 medium and 12 hard questions per 60 MCQ attempt.
+The admin is protected with Firebase Authentication and Firestore rules. Public nickname/score data remains viewable by anyone (as intended). This is **not cheat-resistant**: users may tamper with client-submitted scores. No trusted grading or official user verification is provided.
 
-## Verification and limitations
+## Testing limits
 
-- Automated Node tests validate the bank schema/uniqueness, exam maximum score, unanswered scoring, shuffling, timer calculations, and difficulty distribution.
-- App JavaScript syntax and static build are checked before delivery.
-- Original and new questions need additional independent editorial review; passing schema tests does **not** prove each explanation is pedagogically perfect.
-- Full physical-device (iPhone) and browser end-to-end QA was not completed in this environment.
-- The leaderboard exists only in localStorage; clearing browser data deletes local results. There is no cross-device or anti-cheat synchronization.
-- Questions are revision material, not sourced from an official CE2 examination.
-
-## V4 mobile navigation and responsive refinements
-
-- The former bottom navigation has been replaced with an off-canvas sidebar on viewports up to 960px wide.
-- Tap the menu icon at the top left to open it. Use the close icon, backdrop, navigation link, or Escape key to close it. Focus is moved into the drawer and constrained inside it while open.
-- The original persistent sidebar remains on larger screens.
-- Dashboard cards, quizzes, question navigator, review, lessons, local leaderboard, and welcome intro have narrower mobile layouts, with extra adjustments for 370px phones, landscape, and reduced motion.
-- Data storage keys and GitHub Pages paths are unchanged; existing browser progress should remain intact.
-- A physical iPhone/Safari visual test has **not** been performed; use the checklist below before announcing full device coverage.
-
-### Manual responsive verification checklist
-
-1. On a narrow phone (320, 360, 375, 390px), open the drawer, tap links, close via backdrop and X, check no horizontal page scroll.
-2. On larger phones and tablets (430, 768, 820, 960px), check all cards and layouts remain within the viewport.
-3. At 1024px and desktop widths, check the permanent sidebar shows and no menu icon appears.
-4. Rotate a phone to landscape and ensure the sidebar scrolls, intro can be dismissed, and exam controls are accessible.
-5. Use a keyboard: Tab and Shift+Tab should stay inside an open drawer; Escape closes it.
-6. Start a practice and 60-question exam, check navigation buttons and timer, then refresh mid-exam.
-7. Verify the leaderboard remains explicitly local-only. No backend is included.
+Automated tests verify quiz question bank schema, uniqueness, score math, 60-question selection and 18/30/12 distribution, answer shuffle, and timer utility. Syntax and build checks pass. Real Firebase permissions/sign-ins/read/write, iPhone Safari layout, and full browser end-to-end tests have NOT been verified without a live Firebase project and device/browser test environment. Do not assume these are production-vetted until tested.

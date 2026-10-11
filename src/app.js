@@ -1,5 +1,6 @@
 import { createQuiz, createBalancedExam, scoreQuiz, secondsLeft, formatTime, EXAM_SIZE, EXAM_SECONDS } from './engine.js';
 import { read, write, remove, saveResult, leaderboard } from './storage.js';
+import * as cloud from './cloud.js';
 
 const app = document.querySelector('#app');
 let bank = [];
@@ -223,6 +224,7 @@ function shell(body, active = 'dashboard', { showIntro = false } = {}) {
             ['learn', '✧', 'Python foundations'],
             ['traplab', '⚡', 'Exam trap lab'],
             ['revision', '▤', 'Quick revision'],
+            ['admin', '⚙', 'Admin analytics'],
           ].map(([id, icon, label]) => `<a href="#${id}" class="nav-link ${active === id ? 'active' : ''}"><span>${icon}</span>${label}</a>`).join('')}
         </nav>
         <div class="sidebar-foot"><span class="online-dot"></span> Offline ready <small>Progress saved on this device</small></div>
@@ -232,7 +234,7 @@ function shell(body, active = 'dashboard', { showIntro = false } = {}) {
           <button type="button" id="open-sidebar" class="sidebar-icon-btn menu-toggle" aria-label="Open navigation" aria-controls="app-sidebar" aria-expanded="false"><span class="menu-lines"><i></i><i></i><i></i></span></button>
           <div class="crumb">ARENA <span>/</span> ${esc(active.toUpperCase())}</div>
           <div class="top-right">
-            <span class="local-pill">◉ LOCAL MODE</span>
+            <span class="local-pill">${cloud.configured() ? "◉ FIREBASE READY" : "◉ OFFLINE MODE"}</span>
             <span class="avatar">${esc((nickname || 'G')[0].toUpperCase())}</span>
           </div>
         </header>
@@ -650,7 +652,7 @@ function renderResults() {
     </div>
     ${result.mode === 'exam' ? `
       <div class="name-card panel">
-        <div><h3>Save this score to the leaderboard</h3><p>This leaderboard is stored only on this browser.</p></div>
+        <div><h3>Save this score to the leaderboard</h3><p>${cloud.configured() ? "Save your score on the shared leaderboard (Firebase Spark)." : "Leaderboard is local until Firebase is configured."}</p></div>
         <div class="name-entry">
           <input id="nickname-input" maxlength="24" placeholder="Enter your name" value="${esc(result.nickname || nickname)}" aria-label="Leaderboard name" />
           <button class="btn primary" id="save-name">Save name</button>
@@ -684,7 +686,7 @@ function renderResults() {
 
   document.querySelector('#retake').onclick = () => { location.hash = result.mode === 'exam' ? 'exam' : 'practice'; };
   document.querySelector('#home').onclick = () => { location.hash = 'dashboard'; };
-  document.querySelector('#save-name')?.addEventListener('click', () => {
+  document.querySelector('#save-name')?.addEventListener('click', async () => {
     const value = document.querySelector('#nickname-input').value.trim();
     const status = document.querySelector('#name-status');
     if (value.length < 2) {
@@ -700,27 +702,128 @@ function renderResults() {
       row.nickname = nickname;
       write('history', all);
     }
-    status.textContent = `Saved as ${nickname} on this device ✓`;
+    status.textContent = 'Saved locally. Synchronising…';
+    try {
+      const saved = await cloud.saveExamScore(result, nickname);
+      status.textContent = saved.synced
+        ? saved.analyticsSynced ? '✓ Saved to the live leaderboard and analytics.' : '✓ Leaderboard updated; analytics upload needs retry.'
+        : '✓ Saved locally. ' + saved.reason;
+    } catch (error) {
+      status.textContent = '✓ Saved locally. Online sync failed: ' + error.message;
+    }
   });
 }
 
+function scoreRows(rows) {
+  return rows.length ? rows.map((row, i) => `
+    <div class="table-row">
+      <span class="rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + (i + 1)}</span>
+      <strong>${esc(row.nickname)}</strong>
+      <b>${Number(row.marks).toFixed(2)} / 15</b>
+      <span>${formatTime(row.timeTaken)}</span>
+    </div>`).join('') : '<div class="empty-small">No named exam scores yet. Finish a mock exam and save your name.</div>';
+}
+
 function leader() {
-  const rows = leaderboard();
+  cloud.stopScores();
+  const online = cloud.configured();
   shell(`
-    <div class="eyebrow">PERSONAL RECORDS</div>
-    <div class="page-title"><h1>Local leaderboard.</h1><p>These are the best named mock-exam scores saved on this device only. They are not shared online.</p></div>
+    <div class="eyebrow">STUDENT RANKINGS · ${online ? 'LIVE' : 'ON-DEVICE'}</div>
+    <div class="page-title"><h1>${online ? 'Live leaderboard.' : 'Local leaderboard.'}</h1><p>${online ? 'Top marks from students across devices. Updates arrive automatically.' : 'Firebase is not connected, so these scores belong to this device only.'}</p></div>
     <div class="panel leaderboard-panel">
       <div class="table-row table-head"><span>RANK</span><span>NAME</span><span>SCORE</span><span>TIME</span></div>
-      ${rows.length ? rows.map((row, i) => `
-        <div class="table-row">
-          <span class="rank">${i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : '#' + (i + 1)}</span>
-          <strong>${esc(row.nickname)}</strong>
-          <b>${row.marks.toFixed(2)} / 15</b>
-          <span>${formatTime(row.timeTaken)}</span>
-        </div>`).join('') : '<div class="empty-small">No named exam scores yet. Finish a mock exam and save your name.</div>'}
+      <div id="score-rows">${online ? '<div class="empty-small">Connecting to live leaderboard…</div>' : scoreRows(leaderboard())}</div>
     </div>
-    <div class="info-strip">Clearing browser storage removes these entries. Because this project is frontend-only, this board is local rather than shared between devices.</div>
+    <div class="info-strip">${online ? 'Best exam scores are shared; raw per-exam topic analytics are private. Rankings use submitted browser scores and are not cheating-proof.' : 'Use the included Firebase setup guide to enable the shared leaderboard.'}</div>
   `, 'leaderboard');
+  if (online) cloud.watchScores(rows => {
+    const node = document.querySelector('#score-rows');
+    if (node && location.hash === '#leaderboard') node.innerHTML = scoreRows(rows);
+  }, error => {
+    const node = document.querySelector('#score-rows');
+    if (node) node.innerHTML = `<div class="empty-small">Live scoreboard unavailable: ${esc(error.message)}. Local records are shown below.</div>${scoreRows(leaderboard())}`;
+  }).catch(error => {
+    const node = document.querySelector('#score-rows');
+    if (node) node.innerHTML = `<div class="empty-small">${esc(error.message)}. Showing on-device scores.</div>${scoreRows(leaderboard())}`;
+  });
+}
+
+function admin() {
+  cloud.stopScores();
+  const ready = cloud.configured();
+  shell(`
+    <div class="eyebrow">RESTRICTED / ADMIN CONTROL</div>
+    <section class="admin-hero">
+      <span class="overline">CE2 ARENA / PERFORMANCE STUDIO</span>
+      <h1>Know how your class <em>is performing.</em></h1>
+      <p>Private, aggregate insights into submitted mock exams and topic-level strengths. Access requires the configured admin account and Firestore security rules.</p>
+      <div class="lesson-hero-stats"><span>STUDENT RANKINGS</span><span>TOPIC ACCURACY</span><span>RECENT SUBMISSIONS</span></div>
+    </section>
+    <div class="panel admin-panel">
+      ${!ready ? '<p>Firebase has not been configured. Offline quiz features continue to work; private admin analytics require Firebase Spark.</p>' : `
+        <div class="admin-auth">
+          <label class="field-label" for="admin-email">ADMIN EMAIL</label>
+          <input id="admin-email" type="email" autocomplete="username" placeholder="admin@example.com" />
+          <label class="field-label" for="admin-password">PASSWORD</label>
+          <input id="admin-password" type="password" autocomplete="current-password" placeholder="Your Firebase Auth password" />
+          <div class="action-row"><button class="btn primary" id="admin-login">Sign in securely</button><button class="btn secondary" id="admin-logout">Sign out</button><button class="btn secondary" id="admin-refresh">Refresh report</button></div>
+        </div>
+        <p id="admin-status">${cloud.isAdmin() ? 'Signed in as admin.' : 'Sign in using the admin account you created in Firebase Authentication.'}</p>
+        <div id="admin-report"></div>
+      `}
+    </div>
+  `, 'admin');
+  if (!ready) return;
+  const status = document.querySelector('#admin-status');
+  document.querySelector('#admin-login').onclick = async () => {
+    status.textContent = 'Authenticating…';
+    try {
+      await cloud.loginAdmin(document.querySelector('#admin-email').value.trim(), document.querySelector('#admin-password').value);
+      document.querySelector('#admin-password').value = '';
+      status.textContent = 'Admin session authenticated.';
+      await renderAdminReport();
+    } catch (error) { status.textContent = `Access denied: ${error.message}`; }
+  };
+  document.querySelector('#admin-logout').onclick = async () => {
+    try { await cloud.logoutAdmin(); status.textContent = 'Signed out.'; document.querySelector('#admin-report').innerHTML = ''; }
+    catch (error) { status.textContent = error.message; }
+  };
+  document.querySelector('#admin-refresh').onclick = renderAdminReport;
+  if (cloud.isAdmin()) renderAdminReport();
+}
+
+async function renderAdminReport() {
+  const target = document.querySelector('#admin-report');
+  const status = document.querySelector('#admin-status');
+  if (!target) return;
+  target.innerHTML = '<div class="empty-small">Loading recent submissions…</div>';
+  try {
+    const { scores, attempts } = await cloud.adminReport();
+    if (!document.querySelector('#admin-report')) return;
+    const topicStats = new Map();
+    for (const attempt of attempts) {
+      for (const [topic, item] of Object.entries(attempt.topics || {})) {
+        const row = topicStats.get(topic) || { total: 0, correct: 0 };
+        row.total += item.total;
+        row.correct += item.correct;
+        topicStats.set(topic, row);
+      }
+    }
+    const average = attempts.length ? (attempts.reduce((s, a) => s + a.marks, 0) / attempts.length).toFixed(2) : '—';
+    target.innerHTML = `
+      <div class="admin-metrics">
+        <div class="metric"><span>STUDENTS ON BOARD</span><strong>${scores.length}</strong><small>Top 200 records</small></div>
+        <div class="metric"><span>RECENT EXAMS</span><strong>${attempts.length}</strong><small>Latest 200 submissions</small></div>
+        <div class="metric"><span>AVERAGE MARKS</span><strong>${average}</strong><small>Out of 15</small></div>
+      </div>
+      <div class="admin-columns">
+        <div class="panel"><h3>Topic accuracy</h3>${[...topicStats].sort((a,b) => a[1].correct/a[1].total - b[1].correct/b[1].total).map(([name, item]) => `<div class="admin-topic"><span>${esc(name)}</span><b>${Math.round(item.correct / item.total * 100)}%</b><div class="admin-track"><span style="width:${Math.round(item.correct/item.total*100)}%"></span></div></div>`).join('') || '<p>No submissions yet.</p>'}</div>
+        <div class="panel"><h3>Recent student exams</h3>${attempts.slice(0, 30).map(item => `<div class="admin-student"><span>${esc(item.nickname)}</span><strong>${Number(item.marks).toFixed(2)}/15</strong><small>${item.correct}/60 correct</small></div>`).join('') || '<p>No submissions yet.</p>'}</div>
+      </div>
+      <div class="info-strip">This report shows at most 200 recent attempts and 200 leaderboard records to limit Spark reads. Scores are client-submitted, so treat them as informal practice analytics rather than verified grades.</div>
+    `;
+    status.textContent = 'Private report loaded successfully.';
+  } catch (error) { target.innerHTML = ''; status.textContent = 'Cannot load admin analytics: ' + error.message; }
 }
 
 function mistakesView() {
@@ -858,6 +961,7 @@ n = n // 10</pre><p>Recognize the common patterns behind number-based lab progra
 }
 
 function route() {
+  cloud.stopScores();
   const hash = location.hash.slice(1) || 'dashboard';
   if (quiz && hash !== 'session') {
     if (!confirm('Leave your current session and discard this attempt?')) {
@@ -876,6 +980,7 @@ function route() {
   else if (hash === 'results') renderResults();
   else if (hash === 'mistakes') mistakesView();
   else if (hash === 'leaderboard') leader();
+  else if (hash === 'admin') admin();
   else if (hash === 'learn') learn();
   else if (hash === 'traplab') traplab();
   else if (hash === 'revision') revision();
